@@ -51,7 +51,19 @@ export type LocationArea = {
   label: string;
   blurb: string;
   featured?: boolean;
-  image: "residential" | "commercial" | "movers" | "truck" | "packing" | "long-distance";
+  image:
+    | "austin"
+    | "pflugerville"
+    | "round-rock"
+    | "lakeway"
+    | "bee-cave"
+    | "west-lake-hills"
+    | "cedar-park"
+    | "georgetown"
+    | "leander"
+    | "dripping-springs"
+    | "kyle"
+    | "travis-county";
   intro: string;
 };
 
@@ -63,7 +75,7 @@ export const LOCATIONS: LocationArea[] = [
     label: "Austin, TX",
     blurb: "Downtown, East Austin, South Congress, Domain & everywhere in between.",
     featured: true,
-    image: "residential",
+    image: "austin",
     intro:
       "Moving Day Heroes is a professional moving company in Austin, TX delivering organized relocation services for residential and commercial properties throughout the city. From urban apartment complexes to family homes, we provide careful packing coordination, dependable transportation planning, and structured moving support for efficient local relocations across Austin communities.",
   },
@@ -74,7 +86,7 @@ export const LOCATIONS: LocationArea[] = [
     label: "Pflugerville, TX",
     blurb: "Apartments and houses moved with the same careful standard.",
     featured: true,
-    image: "movers",
+    image: "pflugerville",
     intro:
       "Moving Day Heroes provides professional moving services in Pflugerville, TX for homes, apartments, and local businesses. Our crews handle packing coordination, furniture protection, and dependable transportation for smooth relocations across Pflugerville and nearby Travis County neighborhoods.",
   },
@@ -85,7 +97,7 @@ export const LOCATIONS: LocationArea[] = [
     label: "Round Rock, TX",
     blurb: "Family homes and new builds with reliable local crews.",
     featured: true,
-    image: "truck",
+    image: "round-rock",
     intro:
       "Moving Day Heroes is a trusted moving company in Round Rock, TX offering residential and commercial relocation support. From new builds to established neighborhoods, we deliver careful packing, organized loading, and on-time local moving throughout Round Rock and North Austin.",
   },
@@ -96,7 +108,7 @@ export const LOCATIONS: LocationArea[] = [
     label: "Lakeway, TX",
     blurb: "West Austin lake communities — stairs, docks, and all.",
     featured: true,
-    image: "long-distance",
+    image: "lakeway",
     intro:
       "Moving Day Heroes serves Lakeway, TX with professional movers experienced in hillside homes, lake-area access, and careful furniture handling. We provide packing support, structured transportation planning, and reliable crews for residential and specialty moves in Lakeway.",
   },
@@ -107,7 +119,7 @@ export const LOCATIONS: LocationArea[] = [
     label: "Bee Cave, TX",
     blurb: "Hill Country homes with clear communication and careful crews.",
     featured: true,
-    image: "packing",
+    image: "bee-cave",
     intro:
       "Moving Day Heroes offers professional moving services in Bee Cave, TX for family homes, townhomes, and offices. Our team coordinates packing, protective wrapping, and dependable transportation designed for efficient local moves across Bee Cave and western Travis County.",
   },
@@ -118,7 +130,7 @@ export const LOCATIONS: LocationArea[] = [
     label: "West Lake Hills, TX",
     blurb: "Careful handling for hillside homes and premium properties.",
     featured: true,
-    image: "commercial",
+    image: "west-lake-hills",
     intro:
       "Moving Day Heroes provides careful, organized moving services in West Lake Hills, TX. From hillside residences to estate properties, we focus on furniture protection, access planning, and structured relocation support for homeowners throughout West Lake Hills.",
   },
@@ -128,7 +140,7 @@ export const LOCATIONS: LocationArea[] = [
     state: "TX",
     label: "Cedar Park, TX",
     blurb: "North Austin suburbs — on-time, careful residential moves.",
-    image: "residential",
+    image: "cedar-park",
     intro:
       "Moving Day Heroes delivers professional moving services in Cedar Park, TX for apartments, houses, and local businesses. Enjoy clear quotes, careful packing options, and reliable crews for stress-free relocations across Cedar Park and surrounding communities.",
   },
@@ -138,7 +150,7 @@ export const LOCATIONS: LocationArea[] = [
     state: "TX",
     label: "Georgetown, TX",
     blurb: "Hill Country living without the moving-day stress.",
-    image: "truck",
+    image: "georgetown",
     intro:
       "Moving Day Heroes is a professional moving company serving Georgetown, TX with residential and commercial relocation services. We provide packing coordination, protective furniture handling, and dependable transportation for local moves throughout Georgetown.",
   },
@@ -148,7 +160,7 @@ export const LOCATIONS: LocationArea[] = [
     state: "TX",
     label: "Leander, TX",
     blurb: "Growing neighborhoods, flexible scheduling, honest quotes.",
-    image: "movers",
+    image: "leander",
     intro:
       "Moving Day Heroes offers moving services in Leander, TX with flexible scheduling and honest pricing. Our crews support home and apartment moves with careful packing, organized loading, and reliable transportation across Leander and North Travis County.",
   },
@@ -158,7 +170,7 @@ export const LOCATIONS: LocationArea[] = [
     state: "TX",
     label: "Dripping Springs, TX",
     blurb: "Hill Country homes handled with care and clear communication.",
-    image: "long-distance",
+    image: "dripping-springs",
     intro:
       "Moving Day Heroes provides Hill Country moving services in Dripping Springs, TX. From ranch-style homes to new developments, we deliver careful packing support, furniture protection, and structured relocation planning for local moves.",
   },
@@ -168,7 +180,7 @@ export const LOCATIONS: LocationArea[] = [
     state: "TX",
     label: "Kyle, TX",
     blurb: "South metro moves with crews who know the corridors.",
-    image: "packing",
+    image: "kyle",
     intro:
       "Moving Day Heroes serves Kyle, TX with professional residential and commercial movers. We help families and businesses relocate with organized packing, careful loading, and dependable transportation throughout Kyle and South Austin metro.",
   },
@@ -178,7 +190,7 @@ export const LOCATIONS: LocationArea[] = [
     state: "TX",
     label: "Travis County, TX",
     blurb: "County-wide local moving for homes, offices, and specialty items.",
-    image: "commercial",
+    image: "travis-county",
     intro:
       "Moving Day Heroes is a professional moving company in Travis County, TX delivering organized relocation services for residential and commercial properties throughout the region. From urban apartment complexes to suburban family homes, we provide careful packing coordination, dependable transportation planning, and structured moving support designed for efficient local relocations across Travis County communities.",
   },

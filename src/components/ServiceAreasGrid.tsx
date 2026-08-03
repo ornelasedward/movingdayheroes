@@ -1,23 +1,34 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { FEATURED_LOCATIONS, LOCATIONS, type LocationArea } from "@/lib/content";
-import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-import residential from "@/assets/residential.jpg";
-import commercial from "@/assets/commercial.jpg";
-import movers from "@/assets/movers.jpg";
-import truck from "@/assets/truck.jpg";
-import packing from "@/assets/packing.jpg";
-import longDistance from "@/assets/long-distance.jpg";
+import austin from "@/assets/locations/austin.jpg";
+import pflugerville from "@/assets/locations/pflugerville.png";
+import roundRock from "@/assets/locations/round-rock.png";
+import lakeway from "@/assets/locations/lakeway.png";
+import beeCave from "@/assets/locations/bee-cave.png";
+import westLakeHills from "@/assets/locations/west-lake-hills.png";
+import cedarPark from "@/assets/locations/cedar-park.png";
+import georgetown from "@/assets/locations/georgetown.png";
+import leander from "@/assets/locations/leander.png";
+import drippingSprings from "@/assets/locations/dripping-springs.png";
+import kyle from "@/assets/locations/kyle.png";
+import travisCounty from "@/assets/locations/travis-county.png";
 
 const IMAGES = {
-  residential,
-  commercial,
-  movers,
-  truck,
-  packing,
-  "long-distance": longDistance,
+  austin,
+  pflugerville,
+  "round-rock": roundRock,
+  lakeway,
+  "bee-cave": beeCave,
+  "west-lake-hills": westLakeHills,
+  "cedar-park": cedarPark,
+  georgetown,
+  leander,
+  "dripping-springs": drippingSprings,
+  kyle,
+  "travis-county": travisCounty,
 } as const;
 
 type Props = {
@@ -30,6 +41,14 @@ export function locationImage(area: LocationArea) {
   return IMAGES[area.image];
 }
 
+/** Crop focus — tall photos need bottom bias so landmarks aren't cut off */
+export function locationImagePosition(area: LocationArea) {
+  const positions: Partial<Record<LocationArea["image"], string>> = {
+    pflugerville: "object-[center_85%]",
+  };
+  return positions[area.image] ?? "object-center";
+}
+
 const ServiceAreasGrid = ({ variant = "featured", className }: Props) => {
   const areas = variant === "featured" ? FEATURED_LOCATIONS : LOCATIONS;
 
@@ -39,11 +58,8 @@ const ServiceAreasGrid = ({ variant = "featured", className }: Props) => {
         <div className="text-center max-w-3xl mx-auto mb-12">
           <p className="eyebrow mb-3">Locations</p>
           <h2 className="font-display text-4xl md:text-5xl text-ink tracking-wide">Our Service Areas</h2>
-          <p className="mt-5 text-muted-foreground leading-relaxed">
-            Moving can be overwhelming—but it doesn't have to be. At {SITE.name}, we offer a range of services
-            designed to make your relocation smooth and stress-free. Whether you're moving a home, business, or just
-            a few specialty items, our team is here to help with care, experience, and attention to detail every step
-            of the way.
+          <p className="mt-5 body-copy">
+            Local movers across Austin and Travis County — homes, offices, and specialty moves.
           </p>
         </div>
 
@@ -56,8 +72,8 @@ const ServiceAreasGrid = ({ variant = "featured", className }: Props) => {
               <div className="aspect-[16/10] overflow-hidden">
                 <img
                   src={locationImage(area)}
-                  alt={`Movers serving ${area.label}`}
-                  className="w-full h-full object-cover"
+                  alt={`${area.label} service area`}
+                  className={cn("w-full h-full object-cover", locationImagePosition(area))}
                   loading="lazy"
                 />
               </div>

@@ -157,11 +157,11 @@ const Index = () => {
                 className="relative py-1"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="font-display text-5xl text-primary leading-none">{s.n}</div>
-                  <s.Icon className="h-8 w-8 text-primary/90" strokeWidth={1.5} aria-hidden />
+                  <div className="font-display text-5xl text-background leading-none">{s.n}</div>
+                  <s.Icon className="h-8 w-8 text-background/90" strokeWidth={1.5} aria-hidden />
                 </div>
-                <h3 className="font-display text-xl mb-1.5 tracking-wide">{s.t}</h3>
-                <p className="text-background/65 leading-relaxed text-sm">{s.d}</p>
+                <h3 className="font-display text-xl md:text-2xl mb-2 tracking-wide text-primary">{s.t}</h3>
+                <p className="text-background/80 leading-relaxed text-sm md:text-base">{s.d}</p>
               </motion.div>
             ))}
           </div>
@@ -172,7 +172,7 @@ const Index = () => {
 
       {/* TRUST STRIP */}
       <section className="py-10 border-b border-border/60 bg-card">
-        <div className="container-tight flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-sm text-muted-foreground">
+        <div className="container-tight flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-base text-ink">
           <span className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-primary" /> Licensed & insured</span>
           <span className="inline-flex items-center gap-2"><Truck className="h-4 w-4 text-primary" /> Clean trucks, careful crews</span>
           <span className="inline-flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> {SITE.hours}</span>
@@ -201,7 +201,7 @@ const Index = () => {
             <h2 className="font-display text-4xl md:text-5xl text-ink text-balance tracking-wide">
               Stress-free moves from quote to unload
             </h2>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            <p className="mt-6 body-copy">
               We treat every move like it matters — because it does. Clear communication, careful wrapping, and crews who show up ready to work. Whether you're relocating a home, office, or specialty item, we keep it simple.
             </p>
             <Button asChild variant="ghostInk" size="lg" className="mt-8 -ml-3">
@@ -234,7 +234,7 @@ const Index = () => {
                   <b.icon className="h-5 w-5 text-ink" />
                 </div>
                 <h3 className="font-display text-xl text-ink mb-2 tracking-wide">{b.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{b.desc}</p>
+                <p className="body-copy text-base md:text-[17px]">{b.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -251,7 +251,7 @@ const Index = () => {
                 Our moving services
               </h2>
             </div>
-            <p className="text-muted-foreground max-w-md">
+            <p className="body-copy max-w-md">
               Full-service moving tailored to your needs — home, office, packing, specialty items, and long-distance.
             </p>
           </div>
@@ -273,12 +273,12 @@ const Index = () => {
                     loading="lazy"
                   />
                 </div>
-                <h3 className="font-display text-3xl text-ink mb-2 tracking-wide">{s.title}</h3>
-                <p className="text-muted-foreground mb-4 leading-relaxed">{s.desc}</p>
-                <ul className="space-y-2 mb-5">
+                <h3 className="font-display text-3xl text-ink mb-3 tracking-wide">{s.title}</h3>
+                <p className="body-copy mb-5">{s.desc}</p>
+                <ul className="space-y-2.5 mb-5">
                   {s.points.map((p) => (
-                    <li key={p} className="flex items-center gap-2 text-sm text-ink">
-                      <Check className="h-4 w-4 text-primary shrink-0" /> {p}
+                    <li key={p} className="flex items-start gap-2.5 body-copy text-base md:text-[17px]">
+                      <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" strokeWidth={2.5} /> {p}
                     </li>
                   ))}
                 </ul>
@@ -297,7 +297,7 @@ const Index = () => {
           <div className="text-center max-w-2xl mx-auto mb-12">
             <p className="eyebrow mb-3">Snapshots</p>
             <h2 className="font-display text-4xl md:text-5xl text-ink tracking-wide">Behind every move</h2>
-            <p className="mt-4 text-muted-foreground">
+            <p className="mt-4 body-copy">
               Clean trucks, careful wrapping, and crews who greet you with a smile.
             </p>
           </div>
@@ -334,19 +334,19 @@ const Index = () => {
               Moving in or out of Austin?{" "}
               <span className="text-primary">We've got you.</span>
             </h2>
-            <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
+            <p className="mt-5 body-copy">
               Answer 3 quick questions and we'll text or call you back — usually within 15 minutes.
             </p>
             <div className="mt-8 flex flex-col gap-3 text-ink">
-              <a href={SITE.phoneLink} className="inline-flex items-center gap-3 hover:text-primary transition-colors">
+              <a href={SITE.phoneLink} className="inline-flex items-center gap-3 hover:text-primary transition-colors text-lg font-medium">
                 <Phone className="h-4 w-4" /> {SITE.phone}
               </a>
-              <p className="text-sm text-muted-foreground">Serving {SITE.serviceArea}</p>
+              <p className="body-copy text-base">Serving {SITE.serviceArea}</p>
             </div>
           </div>
           <div className="rounded-2xl bg-card p-8 md:p-10 border border-border/60 shadow-card">
             <p className="font-display text-3xl text-ink tracking-wide">Free quote in 60 seconds</p>
-            <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
+            <ul className="mt-5 space-y-2.5 body-copy text-base">
               <li>✓ Local Austin & long-distance</li>
               <li>✓ Honest, upfront pricing</li>
               <li>✓ Licensed & insured crews</li>

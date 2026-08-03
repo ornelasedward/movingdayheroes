@@ -29,7 +29,7 @@
     --secondary-soft: 214 35% 93%;
 
     --muted: 214 25% 94%;
-    --muted-foreground: 214 20% 40%;
+    --muted-foreground: 214 45% 16%;
 
     --accent: 214 35% 93%;
     --accent-foreground: 214 70% 21%;
@@ -44,7 +44,7 @@
     --radius: 0.5rem;
 
     --ink: 214 70% 21%;
-    --ink-soft: 214 35% 32%;
+    --ink-soft: 214 45% 22%;
     --blush: 10 60% 95%;
     --gold: 10 75% 51%;
 
@@ -101,8 +101,9 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-ink antialiased text-[17px] md:text-lg leading-[1.7];
     font-family: 'DM Sans', system-ui, sans-serif;
+    font-weight: 400;
   }
 
   h1, h2, h3, h4, h5 {
@@ -110,6 +111,10 @@
     font-weight: 800;
     letter-spacing: 0.02em;
     text-transform: uppercase;
+  }
+
+  p {
+    color: hsl(var(--ink));
   }
 }
 
@@ -151,6 +156,9 @@
     @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-10;
   }
   .eyebrow {
-    @apply text-xs uppercase tracking-[0.22em] text-muted-foreground font-medium;
+    @apply text-sm uppercase tracking-[0.18em] text-ink font-semibold;
+  }
+  .body-copy {
+    @apply text-[17px] md:text-lg leading-[1.7] text-ink;
   }
 }

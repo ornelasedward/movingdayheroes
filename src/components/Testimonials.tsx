@@ -52,7 +52,7 @@ const Testimonials = () => {
               </blockquote>
               <figcaption className="mt-6 pt-6 border-t border-border/60">
                 <div className="font-medium text-ink">{r.name}</div>
-                <div className="text-sm text-muted-foreground">{r.role}</div>
+                <div className="text-base text-ink/70">{r.role}</div>
               </figcaption>
             </motion.figure>
           ))}

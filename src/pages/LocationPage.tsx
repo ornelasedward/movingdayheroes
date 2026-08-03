@@ -1,7 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import { ArrowRight, Check, Phone } from "lucide-react";
 import Layout from "@/components/Layout";
-import { locationImage } from "@/components/ServiceAreasGrid";
+import { locationImage, locationImagePosition } from "@/components/ServiceAreasGrid";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -49,7 +50,7 @@ const LocationPage = () => {
             <h1 className="font-display text-4xl md:text-6xl text-ink tracking-wide text-balance leading-tight">
               Professional moving company in {location.label}
             </h1>
-            <p className="mt-6 text-muted-foreground leading-relaxed text-lg">{location.intro}</p>
+            <p className="mt-6 body-copy">{location.intro}</p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <Button asChild variant="sun" size="lg">
                 <Link to="/get-a-quote">
@@ -67,7 +68,7 @@ const LocationPage = () => {
             <img
               src={locationImage(location)}
               alt={`Moving services in ${location.label}`}
-              className="w-full h-full object-cover"
+              className={cn("w-full h-full object-cover", locationImagePosition(location))}
               loading="eager"
             />
           </div>
@@ -75,44 +76,53 @@ const LocationPage = () => {
       </section>
 
       <section className="py-20">
-        <div className="container-tight max-w-4xl">
-          <h2 className="font-display text-3xl md:text-4xl text-ink tracking-wide text-balance">
-            Why choose {SITE.name} as your moving company in {location.label}?
-          </h2>
-          <p className="mt-2 text-primary font-medium">Reliable. Structured. Efficient.</p>
-          <ul className="mt-8 space-y-6">
-            {[
-              {
-                t: `Organized relocation planning across ${location.name}`,
-                d: `We manage residential and commercial moves with structured loading plans, organized scheduling, and careful transportation coordination — prepared for local property layouts, traffic patterns, and access limitations common in ${location.name}.`,
-              },
-              {
-                t: "Flexible support for homes, apartments, and offices",
-                d: "From apartment complexes and townhomes to family residences and office suites, we adapt strategies to reduce delays from elevators, gated communities, and busy loading zones.",
-              },
-              {
-                t: "Dependable processes for local and regional moves",
-                d: "Organized truck loading, protective wrapping, and coordinated scheduling support smooth transitions between properties throughout Travis County and Central Texas.",
-              },
-            ].map((item) => (
-              <li key={item.t} className="flex gap-3">
-                <Check className="h-5 w-5 text-primary shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-display text-xl text-ink tracking-wide">{item.t}</h3>
-                  <p className="mt-2 text-muted-foreground leading-relaxed">{item.d}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+        <div className="container-tight grid md:grid-cols-2 gap-12 items-start">
+          <div className="aspect-[4/3] overflow-hidden rounded-xl shadow-card order-last md:order-first">
+            <img
+              src={locationImage(location)}
+              alt={`Moving crew serving ${location.label}`}
+              className={cn("w-full h-full object-cover", locationImagePosition(location))}
+              loading="lazy"
+            />
+          </div>
+          <div>
+            <h2 className="font-display text-3xl md:text-4xl text-secondary tracking-wide text-balance leading-tight">
+              Why choose {SITE.name} as your moving company in {location.label}?
+            </h2>
+            <p className="mt-3 text-lg font-bold text-ink">Reliable. Structured. Efficient.</p>
+            <ul className="mt-8 space-y-6">
+              {[
+                {
+                  t: `Organized relocation planning across ${location.name}`,
+                  d: `We manage residential and commercial moves with structured loading plans, organized scheduling, and careful transportation coordination — prepared for local property layouts, traffic patterns, and access limitations common in ${location.name}.`,
+                },
+                {
+                  t: "Flexible support for homes, apartments, and offices",
+                  d: "From apartment complexes and townhomes to family residences and office suites, we adapt strategies to reduce delays from elevators, gated communities, and busy loading zones.",
+                },
+                {
+                  t: "Dependable processes for local and regional moves",
+                  d: "Organized truck loading, protective wrapping, and coordinated scheduling support smooth transitions between properties throughout Travis County and Central Texas.",
+                },
+              ].map((item) => (
+                <li key={item.t} className="flex gap-3">
+                  <Check className="h-5 w-5 text-primary shrink-0 mt-1" strokeWidth={2.5} />
+                  <p className="body-copy">
+                    <span className="font-bold text-ink">{item.t}:</span> {item.d}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
       <section className="py-20 bg-muted/50">
         <div className="container-tight max-w-4xl">
-          <h2 className="font-display text-3xl md:text-4xl text-ink tracking-wide">
+          <h2 className="font-display text-3xl md:text-4xl text-secondary tracking-wide">
             Why hire professional movers in {location.label}?
           </h2>
-          <p className="mt-2 text-primary font-medium">Protection. Readiness. Convenience.</p>
+          <p className="mt-3 text-lg font-bold text-ink">Protection. Readiness. Convenience.</p>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {[
               {
@@ -128,9 +138,9 @@ const LocationPage = () => {
                 d: "Structured packing, padding, and loading practices help reduce shifting and damage in transit.",
               },
             ].map((item) => (
-              <div key={item.t} className="p-6 bg-card border border-border/60">
-                <h3 className="font-display text-xl text-ink tracking-wide">{item.t}</h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{item.d}</p>
+              <div key={item.t}>
+                <p className="text-lg font-bold text-ink">{item.t}</p>
+                <p className="mt-2 body-copy text-base md:text-[17px]">{item.d}</p>
               </div>
             ))}
           </div>
@@ -148,7 +158,7 @@ const LocationPage = () => {
                 <AccordionTrigger className="text-left font-display text-xl tracking-wide">
                   {f.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed">{f.a}</AccordionContent>
+                <AccordionContent className="body-copy pb-5">{f.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
