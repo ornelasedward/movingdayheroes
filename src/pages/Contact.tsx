@@ -1,24 +1,31 @@
+import { Link } from "react-router-dom";
+import { ArrowRight, Phone, Mail, MapPin, Clock } from "lucide-react";
 import Layout from "@/components/Layout";
 import QuoteForm from "@/components/QuoteForm";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/site";
 
 const Contact = () => {
   return (
     <Layout
-      title={`Contact — Get a Free Quote | ${SITE.name}`}
-      description="Request a free moving quote. We respond within 24 hours with honest, transparent pricing."
+      title={`Contact | ${SITE.name} Austin`}
+      description="Contact Moving Day Heroes in Austin, TX — or get a free moving quote in under a minute."
       canonical={`${SITE.domain}/contact`}
     >
       <section className="bg-gradient-soft pt-16 pb-10 md:pt-24">
         <div className="container-tight text-center max-w-3xl mx-auto">
-          <p className="eyebrow mb-4">Get a quote</p>
+          <p className="eyebrow mb-4">Austin, TX</p>
           <h1 className="font-display text-5xl md:text-6xl text-ink text-balance tracking-wide">
             Let's plan your <span className="text-primary">move</span>
           </h1>
           <p className="mt-6 text-lg text-muted-foreground">
-            Tell us about your move and we'll send clear pricing within 24 hours.
+            Prefer the fast path? Answer 3 quick questions and we'll text or call you back.
           </p>
+          <Button asChild variant="sun" size="lg" className="mt-8">
+            <Link to="/get-a-quote">
+              Start free quote <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
         </div>
       </section>
 

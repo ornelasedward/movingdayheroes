@@ -41,7 +41,7 @@ const Packing = () => {
         </div>
         <div className="text-center mt-14">
           <Button asChild variant="hero" size="lg">
-            <Link to="/contact">Get packing help <ArrowRight className="h-4 w-4" /></Link>
+            <Link to="/get-a-quote">Get packing help <ArrowRight className="h-4 w-4" /></Link>
           </Button>
         </div>
       </section>

@@ -7,15 +7,14 @@ import {
   Clock,
   Truck,
   Home,
-  Building2,
   Package,
   Check,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
-import QuoteForm from "@/components/QuoteForm";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
+import BrandLogo from "@/components/BrandLogo";
 import { SITE } from "@/lib/site";
 
 import heroImg from "@/assets/hero-move.jpg";
@@ -96,9 +95,9 @@ const Index = () => {
             transition={{ duration: 0.8, delay: 0.15 }}
             className="max-w-3xl"
           >
-            <p className="font-display text-primary text-2xl md:text-3xl tracking-wide mb-3">
-              Moving Day Heroes
-            </p>
+            <div className="inline-block mb-6 bg-white rounded-md px-4 py-3 shadow-card">
+              <BrandLogo variant="stacked" imgClassName="h-20 sm:h-24 md:h-28 w-auto" />
+            </div>
             <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] text-background text-balance tracking-wide">
               Top-rated movers you can trust
             </h1>
@@ -106,8 +105,8 @@ const Index = () => {
               Honest pricing. Reliable crews. Local and long-distance moving built around your schedule.
             </p>
             <div className="mt-9 flex flex-col sm:flex-row gap-3">
-              <Button asChild variant="hero" size="lg">
-                <Link to="/contact">
+              <Button asChild variant="sun" size="lg">
+                <Link to="/get-a-quote">
                   Get a Free Quote <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
@@ -325,17 +324,17 @@ const Index = () => {
 
       <Testimonials />
 
-      {/* FINAL CTA + FORM */}
+      {/* FINAL CTA */}
       <section className="py-24 bg-gradient-soft">
-        <div className="container-tight grid md:grid-cols-2 gap-12 items-start">
-          <div className="md:sticky md:top-28">
+        <div className="container-tight grid md:grid-cols-2 gap-12 items-center">
+          <div>
             <p className="eyebrow mb-3">Get pricing</p>
             <h2 className="font-display text-4xl md:text-5xl text-ink text-balance tracking-wide">
-              Moving in or out?{" "}
+              Moving in or out of Austin?{" "}
               <span className="text-primary">We've got you.</span>
             </h2>
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-              Local house moves, apartment relocations, office transfers, or long-distance — request a free quote and we'll respond fast.
+              Answer 3 quick questions and we'll text or call you back — usually within 15 minutes.
             </p>
             <div className="mt-8 flex flex-col gap-3 text-ink">
               <a href={SITE.phoneLink} className="inline-flex items-center gap-3 hover:text-primary transition-colors">
@@ -344,7 +343,19 @@ const Index = () => {
               <p className="text-sm text-muted-foreground">Serving {SITE.serviceArea}</p>
             </div>
           </div>
-          <QuoteForm />
+          <div className="rounded-2xl bg-card p-8 md:p-10 border border-border/60 shadow-card">
+            <p className="font-display text-3xl text-ink tracking-wide">Free quote in 60 seconds</p>
+            <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
+              <li>✓ Local Austin & long-distance</li>
+              <li>✓ Honest, upfront pricing</li>
+              <li>✓ Licensed & insured crews</li>
+            </ul>
+            <Button asChild variant="sun" size="lg" className="mt-8 w-full">
+              <Link to="/get-a-quote">
+                Start my free quote <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 

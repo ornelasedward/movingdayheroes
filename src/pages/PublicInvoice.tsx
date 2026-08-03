@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import BrandLogo from "@/components/BrandLogo";
+import { SITE } from "@/lib/site";
 
 // Public hosted invoice page. Path: /i/:token
 // Shows invoice + items, "Pay Now" button (Stripe payment link), and (after
@@ -269,7 +271,9 @@ export default function PublicInvoice() {
         <div className="px-6 sm:px-8 py-6 border-b">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="text-sm uppercase tracking-wider text-gray-500">Moving Day Heroes</p>
+              <div className="inline-block mb-3 bg-white rounded-md px-2 py-1.5">
+                <BrandLogo variant="stacked" imgClassName="h-12 w-auto" />
+              </div>
               <h1 className="text-2xl font-semibold mt-1">Your invoice</h1>
               <p className="text-sm text-gray-600 mt-1">Billed to {invoice.customer_name}</p>
             </div>

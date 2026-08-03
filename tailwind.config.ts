@@ -12,8 +12,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ['Bebas Neue', 'Impact', 'sans-serif'],
-        display: ['Bebas Neue', 'Impact', 'sans-serif'],
+        serif: ['Saira Condensed', 'Arial Narrow', 'sans-serif'],
+        display: ['Saira Condensed', 'Arial Narrow', 'sans-serif'],
+        bebas: ['Bebas Neue', 'Impact', 'sans-serif'],
+        heroes: ['Saira Condensed', 'Arial Narrow', 'sans-serif'],
         sans: ['DM Sans', 'system-ui', 'sans-serif'],
       },
       colors: {

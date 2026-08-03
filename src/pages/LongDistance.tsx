@@ -52,7 +52,7 @@ const LongDistance = () => {
               ))}
             </ul>
             <Button asChild variant="hero" size="lg" className="mt-9">
-              <Link to="/contact">Get a long-distance quote <ArrowRight className="h-4 w-4" /></Link>
+              <Link to="/get-a-quote">Get a long-distance quote <ArrowRight className="h-4 w-4" /></Link>
             </Button>
           </div>
           <div className="aspect-[4/3] overflow-hidden shadow-card">

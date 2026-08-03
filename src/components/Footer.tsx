@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Instagram, Clock } from "lucide-react";
 import { NAV, SITE } from "@/lib/site";
+import BrandLogo from "@/components/BrandLogo";
 
 const Footer = () => {
   return (
     <footer className="bg-ink text-background mt-24">
       <div className="container-tight py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
-          <div className="font-display text-3xl tracking-wide">
-            Moving Day <span className="text-primary">Heroes</span>
-          </div>
+          <Link to="/" aria-label={`${SITE.name} home`} className="inline-block bg-white rounded-md px-3 py-2.5">
+            <BrandLogo variant="horizontal" imgClassName="h-11 md:h-12" />
+          </Link>
           <p className="mt-4 text-background/70 max-w-sm leading-relaxed">
             Honest pricing. Reliable crews. Licensed and insured movers for residential, commercial, packing, and long-distance moves.
           </p>

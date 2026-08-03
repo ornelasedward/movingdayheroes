@@ -52,7 +52,7 @@ const Residential = () => {
               ))}
             </ul>
             <Button asChild variant="hero" size="lg" className="mt-10">
-              <Link to="/contact">Get a residential quote <ArrowRight className="h-4 w-4" /></Link>
+              <Link to="/get-a-quote">Get a residential quote <ArrowRight className="h-4 w-4" /></Link>
             </Button>
           </div>
         </div>

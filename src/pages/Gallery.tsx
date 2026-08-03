@@ -61,7 +61,7 @@ const Gallery = () => {
           </div>
           <div className="text-center mt-12">
             <Button asChild variant="hero" size="lg">
-              <Link to="/contact">Get a quote <ArrowRight className="h-4 w-4" /></Link>
+              <Link to="/get-a-quote">Get a quote <ArrowRight className="h-4 w-4" /></Link>
             </Button>
           </div>
         </div>

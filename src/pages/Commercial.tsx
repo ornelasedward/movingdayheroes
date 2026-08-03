@@ -39,7 +39,7 @@ const Commercial = () => {
           </div>
           <div className="text-center mt-14">
             <Button asChild variant="hero" size="lg">
-              <Link to="/contact">Plan your commercial move <ArrowRight className="h-4 w-4" /></Link>
+              <Link to="/get-a-quote">Plan your commercial move <ArrowRight className="h-4 w-4" /></Link>
             </Button>
           </div>
         </div>
