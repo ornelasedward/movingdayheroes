@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound.tsx";
 import About from "./pages/About.tsx";
 import Services from "./pages/Services.tsx";
 import ServiceAreas from "./pages/ServiceAreas.tsx";
+import LocationPage from "./pages/LocationPage.tsx";
 import Residential from "./pages/Residential.tsx";
 import Commercial from "./pages/Commercial.tsx";
 import Packing from "./pages/Packing.tsx";
@@ -40,6 +41,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/service-areas" element={<ServiceAreas />} />
+          <Route path="/service-areas/:slug" element={<LocationPage />} />
           <Route path="/residential" element={<Residential />} />
           <Route path="/commercial" element={<Commercial />} />
           <Route path="/packing" element={<Packing />} />

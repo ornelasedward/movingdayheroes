@@ -11,6 +11,8 @@ export const SITE = {
     "Austin, Round Rock, Cedar Park, Georgetown, Pflugerville, Leander, San Marcos, Dripping Springs & Central Texas — plus long-distance moves nationwide",
   instagramHandle: "movingdayheroes",
   instagramUrl: "https://www.instagram.com/movingdayheroes/",
+  facebookUrl: "https://www.facebook.com/movingdayheroes",
+  googleUrl: "https://www.google.com/search?q=Moving+Day+Heroes+Austin",
   hours: "Mon–Sun · 8:00am – 8:00pm",
 };
 

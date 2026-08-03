@@ -9,13 +9,16 @@ import {
   Home,
   Package,
   Check,
+  ClipboardList,
+  Box,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
+import ServiceAreasGrid from "@/components/ServiceAreasGrid";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
-import BrandLogo from "@/components/BrandLogo";
 import { SITE } from "@/lib/site";
+import logoMark from "@/assets/logo-mark.png";
 
 import heroImg from "@/assets/hero-move.jpg";
 import truckImg from "@/assets/truck.jpg";
@@ -75,7 +78,7 @@ const Index = () => {
       canonical={`${SITE.domain}/`}
     >
       {/* HERO — full-bleed composition */}
-      <section className="relative min-h-[88vh] flex items-end overflow-hidden">
+      <section className="relative flex items-end overflow-hidden min-h-[420px] md:min-h-[480px]">
         <motion.img
           initial={{ scale: 1.08 }}
           animate={{ scale: 1 }}
@@ -88,50 +91,84 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-transparent" />
 
-        <div className="container-tight relative z-10 pb-16 pt-32 md:pb-24 md:pt-40">
+        <div className="container-tight relative z-10 pb-10 pt-8 md:pb-14 md:pt-10">
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
             className="max-w-3xl"
           >
-            <div className="inline-block mb-6 bg-white rounded-md px-4 py-3 shadow-card">
-              <BrandLogo variant="stacked" imgClassName="h-20 sm:h-24 md:h-28 w-auto" />
-            </div>
-            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] text-background text-balance tracking-wide">
-              Top-rated movers you can trust
+            <img
+              src={logoMark}
+              alt=""
+              aria-hidden="true"
+              className="h-16 sm:h-20 md:h-24 w-auto object-contain mb-5 drop-shadow-md"
+            />
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] text-background text-balance tracking-wide">
+              Top-rated movers in Travis County
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-background/85 max-w-xl leading-relaxed">
-              Honest pricing. Reliable crews. Local and long-distance moving built around your schedule.
+            <p className="mt-4 text-base md:text-lg text-background/85 max-w-2xl leading-relaxed">
+              Moving Day Heroes is a professional moving company in Travis County, TX delivering organized
+              relocation services for residential and commercial properties throughout the region. From urban
+              apartment complexes to suburban family homes, we provide careful packing coordination, dependable
+              transportation planning, and structured moving support designed for efficient local relocations
+              across Travis County communities.
             </p>
-            <div className="mt-9 flex flex-col sm:flex-row gap-3">
-              <Button asChild variant="sun" size="lg">
+            <div className="mt-8">
+              <Button asChild variant="sun" size="xl" className="h-14 px-10 text-lg md:h-16 md:px-12 md:text-xl font-semibold">
                 <Link to="/get-a-quote">
-                  Get a Free Quote <ArrowRight className="h-4 w-4" />
+                  Get a Free Quote <ArrowRight className="h-5 w-5" />
                 </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-background/40 bg-background/10 text-background hover:bg-background hover:text-ink"
-              >
-                <a href={SITE.phoneLink}>
-                  <Phone className="h-4 w-4" /> Call {SITE.phone}
-                </a>
               </Button>
             </div>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9, duration: 0.6 }}
-              className="mt-10 text-sm text-background/70"
+              className="mt-7 text-sm text-background/70"
             >
               Licensed · Insured · {SITE.tagline}
             </motion.p>
           </motion.div>
         </div>
       </section>
+
+      {/* PROCESS */}
+      <section className="py-12 md:py-14 bg-ink text-background">
+        <div className="container-tight">
+          <div className="text-center max-w-2xl mx-auto mb-8">
+            <h2 className="font-display text-3xl md:text-4xl text-balance tracking-wide">
+              How it works
+            </h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-4">
+            {[
+              { n: "01", t: "Book our service", d: "Call or request a quote online. We want you as stress-free as possible.", Icon: ClipboardList },
+              { n: "02", t: "Professional packing", d: "We take our time wrapping your belongings — especially the fragile ones.", Icon: Box },
+              { n: "03", t: "Transport", d: "Whether you need one truck or more, we move carefully and on schedule.", Icon: Truck },
+              { n: "04", t: "Unload & place", d: "Tell us where everything goes in your new space — we'll get it there.", Icon: Home },
+            ].map((s, i) => (
+              <motion.div
+                key={s.n}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className="relative py-1"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="font-display text-5xl text-primary leading-none">{s.n}</div>
+                  <s.Icon className="h-8 w-8 text-primary/90" strokeWidth={1.5} aria-hidden />
+                </div>
+                <h3 className="font-display text-xl mb-1.5 tracking-wide">{s.t}</h3>
+                <p className="text-background/65 leading-relaxed text-sm">{s.d}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ServiceAreasGrid variant="featured" className="bg-muted/40 border-b border-border/60" />
 
       {/* TRUST STRIP */}
       <section className="py-10 border-b border-border/60 bg-card">
@@ -249,42 +286,6 @@ const Index = () => {
                   <Link to={s.href}>Learn more <ArrowRight className="h-4 w-4" /></Link>
                 </Button>
               </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PROCESS */}
-      <section className="py-24 bg-ink text-background">
-        <div className="container-tight">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="eyebrow mb-3 text-background/50">How it works</p>
-            <h2 className="font-display text-4xl md:text-5xl text-balance tracking-wide">
-              Moving made easy
-            </h2>
-            <p className="mt-4 text-background/70">
-              From planning and packing to transport and setup — we handle the details so you can focus on the next chapter.
-            </p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-4">
-            {[
-              { n: "01", t: "Book our service", d: "Call or request a quote online. We want you as stress-free as possible." },
-              { n: "02", t: "Professional packing", d: "We take our time wrapping your belongings — especially the fragile ones." },
-              { n: "03", t: "Transport", d: "Whether you need one truck or more, we move carefully and on schedule." },
-              { n: "04", t: "Unload & place", d: "Tell us where everything goes in your new space — we'll get it there." },
-            ].map((s, i) => (
-              <motion.div
-                key={s.n}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="relative py-2"
-              >
-                <div className="font-display text-6xl text-primary leading-none mb-4">{s.n}</div>
-                <h3 className="font-display text-2xl mb-2 tracking-wide">{s.t}</h3>
-                <p className="text-background/65 leading-relaxed text-sm">{s.d}</p>
-              </motion.div>
             ))}
           </div>
         </div>

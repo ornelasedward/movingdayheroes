@@ -44,20 +44,159 @@ export const SERVICES = [
   },
 ];
 
-export const SERVICE_AREAS = [
-  { name: "Austin", blurb: "Downtown, East Austin, South Congress, Domain & everywhere in between." },
-  { name: "Round Rock", blurb: "Family homes and new builds with reliable local crews." },
-  { name: "Cedar Park", blurb: "North Austin suburbs — on-time, careful residential moves." },
-  { name: "Georgetown", blurb: "Hill Country living without the moving-day stress." },
-  { name: "Pflugerville", blurb: "Apartments and houses moved with the same careful standard." },
-  { name: "Leander", blurb: "Growing neighborhoods, flexible scheduling, honest quotes." },
-  { name: "San Marcos", blurb: "Student moves, family homes, and everything in between." },
-  { name: "Dripping Springs", blurb: "Hill Country homes handled with care and clear communication." },
-  { name: "Lakeway & Bee Cave", blurb: "West Austin lake communities — stairs, docks, and all." },
-  { name: "Kyle & Buda", blurb: "South metro moves with crews who know the corridors." },
-  { name: "Travis County", blurb: "County-wide local moving for homes, offices, and specialty items." },
-  { name: "Long Distance", blurb: "Out of Austin and across the country — we go where you go." },
+export type LocationArea = {
+  slug: string;
+  name: string;
+  state: string;
+  label: string;
+  blurb: string;
+  featured?: boolean;
+  image: "residential" | "commercial" | "movers" | "truck" | "packing" | "long-distance";
+  intro: string;
+};
+
+export const LOCATIONS: LocationArea[] = [
+  {
+    slug: "austin-tx",
+    name: "Austin",
+    state: "TX",
+    label: "Austin, TX",
+    blurb: "Downtown, East Austin, South Congress, Domain & everywhere in between.",
+    featured: true,
+    image: "residential",
+    intro:
+      "Moving Day Heroes is a professional moving company in Austin, TX delivering organized relocation services for residential and commercial properties throughout the city. From urban apartment complexes to family homes, we provide careful packing coordination, dependable transportation planning, and structured moving support for efficient local relocations across Austin communities.",
+  },
+  {
+    slug: "pflugerville-tx",
+    name: "Pflugerville",
+    state: "TX",
+    label: "Pflugerville, TX",
+    blurb: "Apartments and houses moved with the same careful standard.",
+    featured: true,
+    image: "movers",
+    intro:
+      "Moving Day Heroes provides professional moving services in Pflugerville, TX for homes, apartments, and local businesses. Our crews handle packing coordination, furniture protection, and dependable transportation for smooth relocations across Pflugerville and nearby Travis County neighborhoods.",
+  },
+  {
+    slug: "round-rock-tx",
+    name: "Round Rock",
+    state: "TX",
+    label: "Round Rock, TX",
+    blurb: "Family homes and new builds with reliable local crews.",
+    featured: true,
+    image: "truck",
+    intro:
+      "Moving Day Heroes is a trusted moving company in Round Rock, TX offering residential and commercial relocation support. From new builds to established neighborhoods, we deliver careful packing, organized loading, and on-time local moving throughout Round Rock and North Austin.",
+  },
+  {
+    slug: "lakeway-tx",
+    name: "Lakeway",
+    state: "TX",
+    label: "Lakeway, TX",
+    blurb: "West Austin lake communities — stairs, docks, and all.",
+    featured: true,
+    image: "long-distance",
+    intro:
+      "Moving Day Heroes serves Lakeway, TX with professional movers experienced in hillside homes, lake-area access, and careful furniture handling. We provide packing support, structured transportation planning, and reliable crews for residential and specialty moves in Lakeway.",
+  },
+  {
+    slug: "bee-cave-tx",
+    name: "Bee Cave",
+    state: "TX",
+    label: "Bee Cave, TX",
+    blurb: "Hill Country homes with clear communication and careful crews.",
+    featured: true,
+    image: "packing",
+    intro:
+      "Moving Day Heroes offers professional moving services in Bee Cave, TX for family homes, townhomes, and offices. Our team coordinates packing, protective wrapping, and dependable transportation designed for efficient local moves across Bee Cave and western Travis County.",
+  },
+  {
+    slug: "west-lake-hills-tx",
+    name: "West Lake Hills",
+    state: "TX",
+    label: "West Lake Hills, TX",
+    blurb: "Careful handling for hillside homes and premium properties.",
+    featured: true,
+    image: "commercial",
+    intro:
+      "Moving Day Heroes provides careful, organized moving services in West Lake Hills, TX. From hillside residences to estate properties, we focus on furniture protection, access planning, and structured relocation support for homeowners throughout West Lake Hills.",
+  },
+  {
+    slug: "cedar-park-tx",
+    name: "Cedar Park",
+    state: "TX",
+    label: "Cedar Park, TX",
+    blurb: "North Austin suburbs — on-time, careful residential moves.",
+    image: "residential",
+    intro:
+      "Moving Day Heroes delivers professional moving services in Cedar Park, TX for apartments, houses, and local businesses. Enjoy clear quotes, careful packing options, and reliable crews for stress-free relocations across Cedar Park and surrounding communities.",
+  },
+  {
+    slug: "georgetown-tx",
+    name: "Georgetown",
+    state: "TX",
+    label: "Georgetown, TX",
+    blurb: "Hill Country living without the moving-day stress.",
+    image: "truck",
+    intro:
+      "Moving Day Heroes is a professional moving company serving Georgetown, TX with residential and commercial relocation services. We provide packing coordination, protective furniture handling, and dependable transportation for local moves throughout Georgetown.",
+  },
+  {
+    slug: "leander-tx",
+    name: "Leander",
+    state: "TX",
+    label: "Leander, TX",
+    blurb: "Growing neighborhoods, flexible scheduling, honest quotes.",
+    image: "movers",
+    intro:
+      "Moving Day Heroes offers moving services in Leander, TX with flexible scheduling and honest pricing. Our crews support home and apartment moves with careful packing, organized loading, and reliable transportation across Leander and North Travis County.",
+  },
+  {
+    slug: "dripping-springs-tx",
+    name: "Dripping Springs",
+    state: "TX",
+    label: "Dripping Springs, TX",
+    blurb: "Hill Country homes handled with care and clear communication.",
+    image: "long-distance",
+    intro:
+      "Moving Day Heroes provides Hill Country moving services in Dripping Springs, TX. From ranch-style homes to new developments, we deliver careful packing support, furniture protection, and structured relocation planning for local moves.",
+  },
+  {
+    slug: "kyle-tx",
+    name: "Kyle",
+    state: "TX",
+    label: "Kyle, TX",
+    blurb: "South metro moves with crews who know the corridors.",
+    image: "packing",
+    intro:
+      "Moving Day Heroes serves Kyle, TX with professional residential and commercial movers. We help families and businesses relocate with organized packing, careful loading, and dependable transportation throughout Kyle and South Austin metro.",
+  },
+  {
+    slug: "travis-county-tx",
+    name: "Travis County",
+    state: "TX",
+    label: "Travis County, TX",
+    blurb: "County-wide local moving for homes, offices, and specialty items.",
+    image: "commercial",
+    intro:
+      "Moving Day Heroes is a professional moving company in Travis County, TX delivering organized relocation services for residential and commercial properties throughout the region. From urban apartment complexes to suburban family homes, we provide careful packing coordination, dependable transportation planning, and structured moving support designed for efficient local relocations across Travis County communities.",
+  },
 ];
+
+/** @deprecated use LOCATIONS */
+export const SERVICE_AREAS = LOCATIONS.map((l) => ({
+  name: l.name,
+  blurb: l.blurb,
+  slug: l.slug,
+  label: l.label,
+}));
+
+export function getLocation(slug: string) {
+  return LOCATIONS.find((l) => l.slug === slug);
+}
+
+export const FEATURED_LOCATIONS = LOCATIONS.filter((l) => l.featured);
 
 export const TEAM = [
   {

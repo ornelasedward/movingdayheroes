@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, Mail, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/site";
 import { MENU, SERVICES } from "@/lib/content";
@@ -41,22 +41,33 @@ const Header = () => {
       <header
         className={cn(
           "fixed top-0 inset-x-0 z-[60] w-full transition-all duration-300",
-          scrolled || open ? "bg-background border-b border-border/60 shadow-soft" : "bg-background/80 backdrop-blur-sm"
+          scrolled || open ? "bg-background border-b border-border/60 shadow-soft" : "bg-background/95 backdrop-blur-sm"
         )}
       >
-        <div className="container-tight flex h-16 md:h-20 items-center justify-between gap-4">
+        <div className="container-tight flex h-16 md:h-20 items-center justify-between gap-3 md:gap-6">
           <Link to="/" className="shrink-0 min-w-0" aria-label={`${SITE.name} home`}>
             <BrandLogo variant="horizontal" />
           </Link>
 
-          <div className="flex items-center gap-2 md:gap-3">
-            <a
-              href={SITE.phoneLink}
-              className="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-primary transition-colors"
-            >
-              <Phone className="h-4 w-4" />
+          <div className="hidden lg:flex items-center gap-5 text-sm font-medium text-ink">
+            <a href={SITE.phoneLink} className="inline-flex items-center gap-2 hover:text-primary transition-colors">
+              <Phone className="h-4 w-4 text-primary shrink-0" />
               {SITE.phone}
             </a>
+            <a
+              href={`mailto:${SITE.email}`}
+              className="inline-flex items-center gap-2 hover:text-primary transition-colors"
+            >
+              <Mail className="h-4 w-4 text-primary shrink-0" />
+              {SITE.email}
+            </a>
+            <span className="inline-flex items-center gap-2 text-muted-foreground">
+              <Clock className="h-4 w-4 text-primary shrink-0" />
+              Mon - Sunday: 8am - 8pm
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2 md:gap-3 shrink-0">
             <Button asChild variant="hero" size="sm" className="hidden sm:inline-flex">
               <Link to="/get-a-quote">Get a Quote</Link>
             </Button>
@@ -81,6 +92,18 @@ const Header = () => {
           aria-label="Site menu"
         >
           <nav className="container-tight py-6 md:py-10 max-w-2xl mx-auto">
+            <div className="flex flex-col gap-3 pb-6 mb-2 border-b border-primary/25 lg:hidden text-sm font-medium">
+              <a href={SITE.phoneLink} className="inline-flex items-center gap-2 text-ink">
+                <Phone className="h-4 w-4 text-primary" /> {SITE.phone}
+              </a>
+              <a href={`mailto:${SITE.email}`} className="inline-flex items-center gap-2 text-ink">
+                <Mail className="h-4 w-4 text-primary" /> {SITE.email}
+              </a>
+              <span className="inline-flex items-center gap-2 text-muted-foreground">
+                <Clock className="h-4 w-4 text-primary" /> Mon - Sunday: 8am - 8pm
+              </span>
+            </div>
+
             <ul>
               {MENU.map((item) => {
                 const base = item.to.split("#")[0];
@@ -178,12 +201,6 @@ const Header = () => {
               })}
             </ul>
             <div className="flex flex-col gap-3 pt-8 sm:hidden">
-              <a
-                href={SITE.phoneLink}
-                className="inline-flex items-center justify-center gap-2 text-sm font-medium text-ink py-2"
-              >
-                <Phone className="h-4 w-4" /> {SITE.phone}
-              </a>
               <Button asChild variant="sun" size="lg">
                 <Link to="/get-a-quote">Get a Quote</Link>
               </Button>

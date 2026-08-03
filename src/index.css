@@ -148,7 +148,7 @@
   .shadow-card { box-shadow: var(--shadow-card); }
   .shadow-glow { box-shadow: var(--shadow-glow); }
   .container-tight {
-    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+    @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-10;
   }
   .eyebrow {
     @apply text-xs uppercase tracking-[0.22em] text-muted-foreground font-medium;
