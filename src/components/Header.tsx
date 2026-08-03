@@ -4,7 +4,6 @@ import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NAV, SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
-import logoImage from "@/assets/logo-image.png";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -24,24 +23,21 @@ const Header = () => {
     <header
       className={cn(
         "fixed top-0 z-50 w-full transition-all duration-500",
-        scrolled ? "bg-background/85 backdrop-blur-md shadow-soft border-b border-border/60" : "bg-transparent"
+        scrolled ? "bg-background/90 backdrop-blur-md shadow-soft border-b border-border/60" : "bg-transparent"
       )}
     >
       <div className="container-tight flex h-16 md:h-20 items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2 group" aria-label="Pretty Potty home">
-          <img
-            src={logoImage}
-            alt=""
-            aria-hidden="true"
-            className="h-10 md:h-12 w-auto object-contain"
-          />
-          <span className="font-serif text-2xl md:text-[1.75rem] tracking-tight text-ink">
-            Pretty <span className="italic text-primary">Potty</span>
+        <Link to="/" className="flex items-center gap-2.5 group" aria-label={`${SITE.name} home`}>
+          <span className="flex h-9 w-9 md:h-10 md:w-10 items-center justify-center rounded-md bg-primary text-ink font-display text-lg md:text-xl leading-none">
+            MH
+          </span>
+          <span className="font-display text-2xl md:text-[1.85rem] leading-none tracking-wide text-ink">
+            Moving Day <span className="text-primary">Heroes</span>
           </span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-7">
-          {NAV.map((n) => (
+        <nav className="hidden lg:flex items-center gap-6">
+          {NAV.filter((n) => n.to !== "/").map((n) => (
             <Link
               key={n.to}
               to={n.to}

@@ -1,21 +1,24 @@
 export const SITE = {
-  name: "Pretty Potty",
-  tagline: "Elevated Restroom Experiences",
-  phone: "(512) 270-5164",
-  phoneLink: "tel:+15122705164",
-  email: "hello@getprettypotty.com",
-  city: "Austin, TX",
-  serviceArea: "Austin, Round Rock, Dripping Springs, Georgetown, Wimberley, Fredericksburg, San Marcos & all of Central Texas",
-  instagramHandle: "getprettypotty",
-  instagramUrl: "https://www.instagram.com/getprettypotty/",
+  name: "Moving Day Heroes",
+  shortName: "MDH",
+  tagline: "Moving Made Simple",
+  phone: "(555) 000-0000", // TODO: replace with real number
+  phoneLink: "tel:+15550000000",
+  email: "hello@movingdayheroes.com",
+  domain: "https://movingdayheroes.com",
+  city: "Your City", // TODO: set primary market
+  serviceArea: "Local & long-distance moves — update this with your service cities",
+  instagramHandle: "movingdayheroes",
+  instagramUrl: "https://www.instagram.com/movingdayheroes/",
+  hours: "Mon–Sun · 8:00am – 8:00pm",
 };
 
 export const NAV = [
   { label: "Home", to: "/" },
-  { label: "Weddings", to: "/wedding-restroom-trailer-austin" },
-  { label: "Events", to: "/events" },
-  { label: "Construction", to: "/construction" },
-  { label: "Pricing", to: "/pricing" },
+  { label: "Residential", to: "/residential" },
+  { label: "Commercial", to: "/commercial" },
+  { label: "Packing", to: "/packing" },
+  { label: "Long Distance", to: "/long-distance" },
   { label: "Gallery", to: "/gallery" },
   { label: "Contact", to: "/contact" },
 ];

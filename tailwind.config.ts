@@ -12,8 +12,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ['Fraunces', 'Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['Bebas Neue', 'Impact', 'sans-serif'],
+        display: ['Bebas Neue', 'Impact', 'sans-serif'],
+        sans: ['DM Sans', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

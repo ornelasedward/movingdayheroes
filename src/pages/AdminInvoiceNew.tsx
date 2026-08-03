@@ -27,12 +27,12 @@ const dollarsToCents = (s: string): number => {
   return Math.round(n * 100);
 };
 
-const DEFAULT_DOC = `<p>This Service Agreement ("Agreement") is between Pretty Potty ("Provider") and the customer named on the invoice ("Customer").</p>
+const DEFAULT_DOC = `<p>This Service Agreement ("Agreement") is between Moving Day Heroes ("Provider") and the customer named on the invoice ("Customer").</p>
 <ol>
-  <li><strong>Services.</strong> Provider will deliver and service luxury restroom trailer(s) as itemized above.</li>
+  <li><strong>Services.</strong> Provider will perform the moving services as itemized above.</li>
   <li><strong>Payment.</strong> Customer agrees to the total stated above. Payment confirms Customer's acceptance of these terms.</li>
-  <li><strong>Cancellation.</strong> Cancellations within 14 days of the event date are non-refundable. Earlier cancellations refunded less a 25% booking fee.</li>
-  <li><strong>Damage.</strong> Customer is responsible for any damage to the unit beyond ordinary wear during the rental period.</li>
+  <li><strong>Cancellation.</strong> Cancellations within 14 days of the move date are non-refundable. Earlier cancellations refunded less a 25% booking fee.</li>
+  <li><strong>Damage.</strong> Customer is responsible for accurately disclosing fragile or specialty items. Provider is not liable for pre-existing damage.</li>
   <li><strong>Liability.</strong> Provider is not liable for indirect or consequential damages. Total liability is capped at the contract amount.</li>
 </ol>
 <p>By signing, Customer agrees to the terms above.</p>`;
@@ -54,7 +54,7 @@ export default function AdminInvoiceNew() {
   const [items, setItems] = useState<ItemDraft[]>([blankItem()]);
 
   const [attachDoc, setAttachDoc] = useState(true);
-  const [docTitle, setDocTitle] = useState("Pretty Potty Service Agreement");
+  const [docTitle, setDocTitle] = useState("Moving Day Heroes Service Agreement");
   const [docHtml, setDocHtml] = useState(DEFAULT_DOC);
 
   const [sendNow, setSendNow] = useState(true);

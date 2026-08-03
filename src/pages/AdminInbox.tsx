@@ -1052,7 +1052,7 @@ const AdminInbox = () => {
                   </button>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  Sending as <strong>hello@getprettypotty.com</strong>. Threaded as a reply.
+                  Sending as <strong>hello@movingdayheroes.com</strong>. Threaded as a reply.
                 </p>
                 <Textarea
                   ref={replyTextareaRef}
@@ -1140,7 +1140,7 @@ const AdminInbox = () => {
           </DialogHeader>
           <div className="space-y-3">
             <p className="text-xs text-muted-foreground">
-              From <strong>hello@getprettypotty.com</strong>
+              From <strong>hello@movingdayheroes.com</strong>
             </p>
             <div>
               <Label htmlFor="compose-to">To</Label>

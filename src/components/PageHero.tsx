@@ -18,7 +18,7 @@ const PageHero = ({ eyebrow, title, subtitle, image }: PageHeroProps) => {
           transition={{ duration: 0.7 }}
         >
           {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
-          <h1 className="font-serif text-5xl md:text-6xl leading-[1.05] text-ink text-balance">{title}</h1>
+          <h1 className="font-display text-5xl md:text-6xl leading-[1.02] text-ink text-balance tracking-wide">{title}</h1>
           {subtitle && (
             <p className="mt-6 text-lg text-muted-foreground max-w-lg leading-relaxed">{subtitle}</p>
           )}
@@ -27,7 +27,7 @@ const PageHero = ({ eyebrow, title, subtitle, image }: PageHeroProps) => {
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-card"
+          className="relative aspect-[4/3] overflow-hidden shadow-card"
         >
           <img src={image} alt="" className="w-full h-full object-cover" loading="eager" />
         </motion.div>

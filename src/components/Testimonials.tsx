@@ -4,32 +4,32 @@ import { Star } from "lucide-react";
 const REVIEWS = [
   {
     quote:
-      "Our wedding guests couldn't stop raving about the restrooms. They felt like a luxury hotel suite — completely transformed the experience.",
-    name: "Hannah & Marcus",
-    role: "Wedding · Dripping Springs",
+      "They showed up on time, wrapped everything carefully, and had us settled in before dinner. Moving day actually felt manageable.",
+    name: "Sarah M.",
+    role: "Residential move",
   },
   {
     quote:
-      "Pretty Potty made our outdoor gala feel effortlessly upscale. Spotless, beautiful, and the team was incredibly professional.",
-    name: "Elena R.",
-    role: "Corporate event · Austin",
+      "We needed an office relocated over a weekend with zero downtime Monday. The crew was professional, fast, and careful with our equipment.",
+    name: "James T.",
+    role: "Commercial move",
   },
   {
     quote:
-      "Setup was fast, the trailer was pristine, and our guests had zero complaints. Worth every penny for our hill country wedding.",
-    name: "Sophie & James",
-    role: "Wedding · Wimberley",
+      "Honest quote, no surprise fees, and they treated our furniture like it was theirs. Highly recommend for local or long-distance.",
+    name: "Priya & Dan",
+    role: "Long-distance move",
   },
 ];
 
 const Testimonials = () => {
   return (
-    <section className="py-24 bg-blush/40">
+    <section className="py-24 bg-secondary-soft/50">
       <div className="container-tight">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="eyebrow mb-3">Loved by Central Texas</p>
-          <h2 className="font-serif text-4xl md:text-5xl text-ink text-balance">
-            What our clients are saying
+          <p className="eyebrow mb-3">What customers say</p>
+          <h2 className="font-display text-4xl md:text-5xl text-ink text-balance tracking-wide">
+            Trusted movers. Real reviews.
           </h2>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
@@ -47,7 +47,7 @@ const Testimonials = () => {
                   <Star key={j} className="h-4 w-4 fill-current" />
                 ))}
               </div>
-              <blockquote className="font-serif text-lg leading-relaxed text-ink flex-1">
+              <blockquote className="text-lg leading-relaxed text-ink flex-1">
                 "{r.quote}"
               </blockquote>
               <figcaption className="mt-6 pt-6 border-t border-border/60">

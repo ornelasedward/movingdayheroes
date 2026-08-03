@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Instagram } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram, Clock } from "lucide-react";
 import { NAV, SITE } from "@/lib/site";
 
 const Footer = () => {
@@ -7,11 +7,11 @@ const Footer = () => {
     <footer className="bg-ink text-background mt-24">
       <div className="container-tight py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
-          <div className="font-serif text-3xl">
-            Pretty <span className="italic text-primary">Potty</span>
+          <div className="font-display text-3xl tracking-wide">
+            Moving Day <span className="text-primary">Heroes</span>
           </div>
           <p className="mt-4 text-background/70 max-w-sm leading-relaxed">
-            Luxury restroom trailers for weddings, events, and job sites across Central Texas. Locally owned in {SITE.city}.
+            Honest pricing. Reliable crews. Licensed and insured movers for residential, commercial, packing, and long-distance moves.
           </p>
           <div className="mt-6 space-y-2 text-sm text-background/80">
             <a href={SITE.phoneLink} className="flex items-center gap-2 hover:text-primary transition-colors">
@@ -20,7 +20,8 @@ const Footer = () => {
             <a href={`mailto:${SITE.email}`} className="flex items-center gap-2 hover:text-primary transition-colors">
               <Mail className="h-4 w-4" /> {SITE.email}
             </a>
-            <p className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Austin, Texas</p>
+            <p className="flex items-center gap-2"><MapPin className="h-4 w-4" /> {SITE.city}</p>
+            <p className="flex items-center gap-2"><Clock className="h-4 w-4" /> {SITE.hours}</p>
             <a
               href={SITE.instagramUrl}
               target="_blank"
@@ -33,7 +34,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <h4 className="font-serif text-lg mb-4">Explore</h4>
+          <h4 className="font-display text-xl mb-4 tracking-wide">Explore</h4>
           <ul className="space-y-2 text-sm text-background/70">
             {NAV.map((n) => (
               <li key={n.to}><Link to={n.to} className="hover:text-primary transition-colors">{n.label}</Link></li>
@@ -42,16 +43,16 @@ const Footer = () => {
         </div>
 
         <div>
-          <h4 className="font-serif text-lg mb-4">Service Area</h4>
+          <h4 className="font-display text-xl mb-4 tracking-wide">Service Area</h4>
           <p className="text-sm text-background/70 leading-relaxed">{SITE.serviceArea}</p>
+          <p className="mt-4 text-sm text-background/50">{SITE.tagline}</p>
         </div>
       </div>
 
       <div className="border-t border-background/10">
         <div className="container-tight py-6 flex flex-col sm:flex-row gap-3 items-center justify-between text-xs text-background/50">
-          <p>© {new Date().getFullYear()} Pretty Potty. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Moving Day Heroes. All rights reserved.</p>
           <p className="flex items-center gap-3">
-            <span>{SITE.tagline}</span>
             <Link to="/privacy" className="hover:text-primary transition-colors">Privacy</Link>
             <Link to="/admin" className="hover:text-primary transition-colors">Admin</Link>
           </p>

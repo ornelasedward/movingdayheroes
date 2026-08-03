@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, Sparkles, Clock, Truck, MapPin, Heart, Check } from "lucide-react";
+import {
+  ArrowRight,
+  Phone,
+  ShieldCheck,
+  Clock,
+  Truck,
+  Home,
+  Building2,
+  Package,
+  Check,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import QuoteForm from "@/components/QuoteForm";
@@ -8,129 +18,132 @@ import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import { SITE } from "@/lib/site";
 
-import heroImg from "@/assets/hero-interior.jpg";
-import exteriorImg from "@/assets/trailer-exterior.jpg";
-import vanityImg from "@/assets/interior-vanity.jpg";
-import weddingImg from "@/assets/wedding-setup.jpg";
-import eventImg from "@/assets/event-setup.jpg";
-import constructionImg from "@/assets/construction-setup.jpg";
+import heroImg from "@/assets/hero-move.jpg";
+import truckImg from "@/assets/truck.jpg";
+import moversImg from "@/assets/movers.jpg";
+import residentialImg from "@/assets/residential.jpg";
+import commercialImg from "@/assets/commercial.jpg";
+import packingImg from "@/assets/packing.jpg";
+import longDistanceImg from "@/assets/long-distance.jpg";
+import galleryCrew from "@/assets/gallery-crew.jpg";
+import galleryTruck from "@/assets/gallery-truck.jpg";
+import specialtyImg from "@/assets/specialty.jpg";
 
 const BENEFITS = [
-  { icon: Sparkles, title: "Luxury, clean interiors", desc: "Real flushing toilets, marble vanities, and warm lighting." },
-  { icon: Heart, title: "No lines for guests", desc: "Multi-stall comfort that keeps your event flowing." },
-  { icon: Clock, title: "Setup in 15–30 min", desc: "Quiet, fast, and out of the way before guests arrive." },
-  { icon: Truck, title: "Reliable delivery", desc: "On-time, on-spec, every single event." },
-  { icon: MapPin, title: "Locally owned in Austin", desc: "Real Texans serving Central Texas with care." },
+  { icon: ShieldCheck, title: "Licensed & insured", desc: "Your belongings are protected from the first box to the last." },
+  { icon: Clock, title: "On your schedule", desc: "Local and flexible timing — including evenings and weekends." },
+  { icon: Truck, title: "Reliable crews", desc: "Trained movers who show up on time and treat your home with respect." },
+  { icon: Package, title: "Packing available", desc: "Full or partial packing with pro-grade materials." },
+  { icon: Home, title: "Home & office", desc: "Apartments, houses, and commercial spaces — same careful standard." },
 ];
 
-const USE_CASES = [
+const SERVICES = [
   {
-    title: "Weddings",
-    desc: "An upscale restroom experience your guests will remember — for the right reasons.",
-    img: weddingImg,
-    href: "/wedding-restroom-trailer-austin",
+    title: "Residential Moving",
+    desc: "Apartments, houses, and everything in between — careful handling of household items from start to finish.",
+    img: residentialImg,
+    href: "/residential",
+    points: ["Friendly, professional movers", "Fully licensed and insured", "Careful handling of all household items"],
   },
   {
-    title: "Events",
-    desc: "Corporate gatherings, private parties, and festivals deserve elevated amenities.",
-    img: eventImg,
-    href: "/events",
+    title: "Commercial Moving",
+    desc: "Office and industrial moves tailored to your schedule so your team stays productive.",
+    img: commercialImg,
+    href: "/commercial",
+    points: ["Office and warehouse moving", "Weekend & after-hours options", "Efficient packing and logistics"],
   },
   {
-    title: "Construction",
-    desc: "Long-term rentals that crews actually look forward to using.",
-    img: constructionImg,
-    href: "/construction",
+    title: "Packing Services",
+    desc: "Full packing, partial packing, or supplies only — we wrap fragile items so nothing is left to chance.",
+    img: packingImg,
+    href: "/packing",
+    points: ["Wrapping and packing for any move", "Affordable supply packages", "Secure, professional-grade materials"],
   },
-];
-
-const FEATURES = [
-  "Serves 100–150 guests",
-  "Real flushing toilets",
-  "Running water sinks",
-  "Soft interior lighting",
-  "Climate control",
-  "Delivered & set up for you",
+  {
+    title: "Long-Distance Moving",
+    desc: "Across the state or across the country — safe, on-time delivery wherever you're headed.",
+    img: longDistanceImg,
+    href: "/long-distance",
+    points: ["Long-distance moving experts", "Licensed and insured movers", "Full-service packing and transport"],
+  },
 ];
 
 const Index = () => {
   return (
     <Layout
-      title="Pretty Potty — Luxury Restroom Trailer Rental in Austin, TX"
-      description="Austin's premier luxury restroom trailers for weddings, events, and job sites across Central Texas. Get a free quote today."
-      canonical="https://getprettypotty.com/"
+      title="Moving Day Heroes — Professional Local & Long-Distance Movers"
+      description="Honest pricing. Reliable crews. Licensed and insured movers for residential, commercial, packing, and long-distance moves. Get a free quote today."
+      canonical={`${SITE.domain}/`}
     >
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-soft">
-        <div className="absolute inset-0 bg-gradient-hero opacity-60 pointer-events-none" />
-        <div className="container-tight relative pt-10 pb-20 md:pt-20 md:pb-28 grid gap-12 md:gap-10 md:grid-cols-2 items-center">
+      {/* HERO — full-bleed composition */}
+      <section className="relative min-h-[88vh] flex items-end overflow-hidden">
+        <motion.img
+          initial={{ scale: 1.08 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+          src={heroImg}
+          alt="Professional movers loading a moving truck"
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-gradient-hero" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-transparent" />
+
+        <div className="container-tight relative z-10 pb-16 pt-32 md:pb-24 md:pt-40">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="max-w-3xl"
           >
-            <p className="eyebrow mb-5">Austin, Texas · Luxury Restroom Trailers</p>
-            <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl leading-[1.02] text-ink text-balance">
-              Luxury restroom trailers in <span className="italic text-primary">Austin, TX</span>
+            <p className="font-display text-primary text-2xl md:text-3xl tracking-wide mb-3">
+              Moving Day Heroes
+            </p>
+            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] text-background text-balance tracking-wide">
+              Top-rated movers you can trust
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              Perfect for weddings, events, and job sites across Central Texas. Spotless, beautiful, and effortlessly set up for you.
+            <p className="mt-6 text-lg md:text-xl text-background/85 max-w-xl leading-relaxed">
+              Honest pricing. Reliable crews. Local and long-distance moving built around your schedule.
             </p>
             <div className="mt-9 flex flex-col sm:flex-row gap-3">
               <Button asChild variant="hero" size="lg">
                 <Link to="/contact">
-                  Get a Quote <ArrowRight className="h-4 w-4" />
+                  Get a Free Quote <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-background/40 bg-background/10 text-background hover:bg-background hover:text-ink"
+              >
                 <a href={SITE.phoneLink}>
                   <Phone className="h-4 w-4" /> Call {SITE.phone}
                 </a>
               </Button>
             </div>
-            <div className="mt-10 flex items-center gap-6 text-sm text-muted-foreground">
-              <div className="flex -space-x-1">
-                <span className="h-2 w-2 rounded-full bg-primary" />
-                <span className="h-2 w-2 rounded-full bg-secondary" />
-                <span className="h-2 w-2 rounded-full bg-gold" />
-              </div>
-              Trusted by Central Texas weddings & events
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-card">
-              <img
-                src={heroImg}
-                alt="Luxury restroom trailer interior with marble vanity and warm lighting"
-                className="w-full h-full object-cover"
-                loading="eager"
-                width={1920}
-                height={1280}
-              />
-            </div>
-            <div className="hidden md:block absolute -bottom-6 -left-6 w-44 aspect-square rounded-2xl overflow-hidden shadow-card border-4 border-background">
-              <img src={exteriorImg} alt="Restroom trailer exterior at sunset" className="w-full h-full object-cover" loading="eager" />
-            </div>
-            <div className="hidden md:flex absolute -top-6 -right-6 px-5 py-4 rounded-2xl bg-card shadow-card border border-border/60 items-center gap-3">
-              <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
-                <Sparkles className="h-5 w-5 text-ink" />
-              </div>
-              <div>
-                <div className="font-serif text-lg leading-none text-ink">Spotless</div>
-                <div className="text-xs text-muted-foreground mt-1">Every event, guaranteed</div>
-              </div>
-            </div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.9, duration: 0.6 }}
+              className="mt-10 text-sm text-background/70"
+            >
+              Licensed · Insured · {SITE.tagline}
+            </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* TRUST + VISUAL */}
+      {/* TRUST STRIP */}
+      <section className="py-10 border-b border-border/60 bg-card">
+        <div className="container-tight flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-sm text-muted-foreground">
+          <span className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-primary" /> Licensed & insured</span>
+          <span className="inline-flex items-center gap-2"><Truck className="h-4 w-4 text-primary" /> Clean trucks, careful crews</span>
+          <span className="inline-flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> {SITE.hours}</span>
+        </div>
+      </section>
+
+      {/* DIFFERENCE */}
       <section className="py-24">
         <div className="container-tight grid md:grid-cols-2 gap-14 items-center">
           <motion.div
@@ -138,25 +151,25 @@ const Index = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="grid grid-cols-2 gap-4"
+            className="relative"
           >
-            <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-soft">
-              <img src={vanityImg} alt="Vanity interior" className="w-full h-full object-cover" loading="lazy" />
+            <div className="aspect-[4/5] overflow-hidden shadow-card">
+              <img src={moversImg} alt="Movers carefully handling boxes" className="w-full h-full object-cover" loading="lazy" />
             </div>
-            <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-soft mt-10">
-              <img src={exteriorImg} alt="Trailer exterior" className="w-full h-full object-cover" loading="lazy" />
+            <div className="hidden md:block absolute -bottom-6 -right-6 w-48 aspect-[4/3] overflow-hidden shadow-card border-4 border-background">
+              <img src={truckImg} alt="Moving truck ready for delivery" className="w-full h-full object-cover" loading="lazy" />
             </div>
           </motion.div>
           <div>
-            <p className="eyebrow mb-3">The Pretty Potty difference</p>
-            <h2 className="font-serif text-4xl md:text-5xl text-ink text-balance">
-              Clean, modern, and designed to elevate your event
+            <p className="eyebrow mb-3">The Heroes difference</p>
+            <h2 className="font-display text-4xl md:text-5xl text-ink text-balance tracking-wide">
+              Stress-free moves from quote to unload
             </h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              We treat every restroom like it's our own — with marble vanities, real running water, soft lighting, and the kind of finishing touches your guests notice. Because the details always do.
+              We treat every move like it matters — because it does. Clear communication, careful wrapping, and crews who show up ready to work. Whether you're relocating a home, office, or specialty item, we keep it simple.
             </p>
             <Button asChild variant="ghostInk" size="lg" className="mt-8 -ml-3">
-              <Link to="/gallery">View the gallery <ArrowRight className="h-4 w-4" /></Link>
+              <Link to="/gallery">See our work <ArrowRight className="h-4 w-4" /></Link>
             </Button>
           </div>
         </div>
@@ -167,8 +180,8 @@ const Index = () => {
         <div className="container-tight">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <p className="eyebrow mb-3">Why choose us</p>
-            <h2 className="font-serif text-4xl md:text-5xl text-ink text-balance">
-              The luxury your guests deserve
+            <h2 className="font-display text-4xl md:text-5xl text-ink text-balance tracking-wide">
+              Built around your moving day
             </h2>
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
@@ -179,12 +192,12 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="rounded-2xl bg-card p-7 border border-border/60 hover:shadow-card hover:-translate-y-1 transition-all duration-500"
+                className="p-6"
               >
                 <div className="h-11 w-11 rounded-full bg-primary-soft flex items-center justify-center mb-5">
                   <b.icon className="h-5 w-5 text-ink" />
                 </div>
-                <h3 className="font-serif text-xl text-ink mb-2">{b.title}</h3>
+                <h3 className="font-display text-xl text-ink mb-2 tracking-wide">{b.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{b.desc}</p>
               </motion.div>
             ))}
@@ -192,94 +205,74 @@ const Index = () => {
         </div>
       </section>
 
-      {/* USE CASES */}
+      {/* SERVICES */}
       <section className="py-24">
         <div className="container-tight">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
             <div>
-              <p className="eyebrow mb-3">Where we shine</p>
-              <h2 className="font-serif text-4xl md:text-5xl text-ink text-balance max-w-xl">
-                Built for the moments that matter
+              <p className="eyebrow mb-3">Services</p>
+              <h2 className="font-display text-4xl md:text-5xl text-ink text-balance max-w-xl tracking-wide">
+                Our moving services
               </h2>
             </div>
             <p className="text-muted-foreground max-w-md">
-              From hill country weddings to long-term construction sites, we deliver the same standard of care.
+              Full-service moving tailored to your needs — home, office, packing, specialty items, and long-distance.
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {USE_CASES.map((u, i) => (
+          <div className="grid gap-8 md:grid-cols-2">
+            {SERVICES.map((s, i) => (
               <motion.article
-                key={u.title}
+                key={s.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="group rounded-2xl overflow-hidden bg-card border border-border/60 shadow-soft hover:shadow-card transition-all duration-500"
+                transition={{ duration: 0.6, delay: i * 0.08 }}
+                className="group"
               >
-                <div className="aspect-[4/3] overflow-hidden">
+                <div className="aspect-[16/10] overflow-hidden mb-6">
                   <img
-                    src={u.img}
-                    alt={u.title}
+                    src={s.img}
+                    alt={s.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                   />
                 </div>
-                <div className="p-7">
-                  <h3 className="font-serif text-2xl text-ink mb-2">{u.title}</h3>
-                  <p className="text-muted-foreground mb-5">{u.desc}</p>
-                  <Button asChild variant="ghostInk" size="sm" className="-ml-3">
-                    <Link to={u.href}>Learn more <ArrowRight className="h-4 w-4" /></Link>
-                  </Button>
-                </div>
+                <h3 className="font-display text-3xl text-ink mb-2 tracking-wide">{s.title}</h3>
+                <p className="text-muted-foreground mb-4 leading-relaxed">{s.desc}</p>
+                <ul className="space-y-2 mb-5">
+                  {s.points.map((p) => (
+                    <li key={p} className="flex items-center gap-2 text-sm text-ink">
+                      <Check className="h-4 w-4 text-primary shrink-0" /> {p}
+                    </li>
+                  ))}
+                </ul>
+                <Button asChild variant="ghostInk" size="sm" className="-ml-3">
+                  <Link to={s.href}>Learn more <ArrowRight className="h-4 w-4" /></Link>
+                </Button>
               </motion.article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FEATURED TRAILER */}
-      <section className="py-24 bg-secondary-soft/60">
-        <div className="container-tight grid md:grid-cols-2 gap-14 items-center">
-          <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-card order-last md:order-first">
-            <img src={exteriorImg} alt="3-stall luxury restroom trailer" className="w-full h-full object-cover" loading="lazy" />
-          </div>
-          <div>
-            <p className="eyebrow mb-3">Featured trailer</p>
-            <h2 className="font-serif text-4xl md:text-5xl text-ink text-balance">
-              The 3-Stall Luxury Restroom Trailer
-            </h2>
-            <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-              Our signature trailer comfortably serves 100–150 guests in elevated style. Bright, climate-controlled interiors with real plumbing — no compromises.
-            </p>
-            <ul className="mt-8 grid sm:grid-cols-2 gap-3">
-              {FEATURES.map((f) => (
-                <li key={f} className="flex items-center gap-3 text-ink">
-                  <span className="h-6 w-6 rounded-full bg-primary flex items-center justify-center shrink-0">
-                    <Check className="h-3.5 w-3.5 text-ink" />
-                  </span>
-                  <span className="text-sm">{f}</span>
-                </li>
-              ))}
-            </ul>
-            <Button asChild variant="hero" size="lg" className="mt-9">
-              <Link to="/contact">Check availability <ArrowRight className="h-4 w-4" /></Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* HOW IT WORKS */}
-      <section className="py-24">
+      {/* PROCESS */}
+      <section className="py-24 bg-ink text-background">
         <div className="container-tight">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="eyebrow mb-3">How it works</p>
-            <h2 className="font-serif text-4xl md:text-5xl text-ink text-balance">Three simple steps</h2>
+            <p className="eyebrow mb-3 text-background/50">How it works</p>
+            <h2 className="font-display text-4xl md:text-5xl text-balance tracking-wide">
+              Moving made easy
+            </h2>
+            <p className="mt-4 text-background/70">
+              From planning and packing to transport and setup — we handle the details so you can focus on the next chapter.
+            </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-4">
             {[
-              { n: "01", t: "Request a quote", d: "Share a few details about your event and we'll send custom pricing within 24 hours." },
-              { n: "02", t: "Choose your date", d: "We'll confirm availability and walk through delivery, setup, and any custom touches." },
-              { n: "03", t: "We handle everything", d: "Our team delivers, sets up, and picks up — leaving you to enjoy the day." },
+              { n: "01", t: "Book our service", d: "Call or request a quote online. We want you as stress-free as possible." },
+              { n: "02", t: "Professional packing", d: "We take our time wrapping your belongings — especially the fragile ones." },
+              { n: "03", t: "Transport", d: "Whether you need one truck or more, we move carefully and on schedule." },
+              { n: "04", t: "Unload & place", d: "Tell us where everything goes in your new space — we'll get it there." },
             ].map((s, i) => (
               <motion.div
                 key={s.n}
@@ -287,13 +280,45 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="relative rounded-2xl p-8 bg-card border border-border/60"
+                className="relative py-2"
               >
-                <div className="font-serif text-6xl text-primary/70 leading-none mb-4">{s.n}</div>
-                <h3 className="font-serif text-2xl text-ink mb-2">{s.t}</h3>
-                <p className="text-muted-foreground leading-relaxed">{s.d}</p>
+                <div className="font-display text-6xl text-primary leading-none mb-4">{s.n}</div>
+                <h3 className="font-display text-2xl mb-2 tracking-wide">{s.t}</h3>
+                <p className="text-background/65 leading-relaxed text-sm">{s.d}</p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SNAPSHOTS */}
+      <section className="py-24">
+        <div className="container-tight">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <p className="eyebrow mb-3">Snapshots</p>
+            <h2 className="font-display text-4xl md:text-5xl text-ink tracking-wide">Behind every move</h2>
+            <p className="mt-4 text-muted-foreground">
+              Clean trucks, careful wrapping, and crews who greet you with a smile.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {[truckImg, galleryCrew, specialtyImg, galleryTruck].map((src, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.96 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className={`overflow-hidden ${i % 2 === 1 ? "mt-6" : ""}`}
+              >
+                <img src={src} alt="" className="w-full aspect-[3/4] object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+              </motion.div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Button asChild variant="outline" size="lg">
+              <Link to="/gallery">View gallery <ArrowRight className="h-4 w-4" /></Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -305,11 +330,12 @@ const Index = () => {
         <div className="container-tight grid md:grid-cols-2 gap-12 items-start">
           <div className="md:sticky md:top-28">
             <p className="eyebrow mb-3">Get pricing</p>
-            <h2 className="font-serif text-4xl md:text-5xl text-ink text-balance">
-              Get pricing for <span className="italic text-primary">your event</span>
+            <h2 className="font-display text-4xl md:text-5xl text-ink text-balance tracking-wide">
+              Moving in or out?{" "}
+              <span className="text-primary">We've got you.</span>
             </h2>
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-              Tell us a bit about your day and we'll send a personalized quote within 24 hours. Most weddings book 4–8 months ahead.
+              Local house moves, apartment relocations, office transfers, or long-distance — request a free quote and we'll respond fast.
             </p>
             <div className="mt-8 flex flex-col gap-3 text-ink">
               <a href={SITE.phoneLink} className="inline-flex items-center gap-3 hover:text-primary transition-colors">

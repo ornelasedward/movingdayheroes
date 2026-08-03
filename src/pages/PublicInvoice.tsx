@@ -269,7 +269,7 @@ export default function PublicInvoice() {
         <div className="px-6 sm:px-8 py-6 border-b">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="text-sm uppercase tracking-wider text-gray-500">Pretty Potty</p>
+              <p className="text-sm uppercase tracking-wider text-gray-500">Moving Day Heroes</p>
               <h1 className="text-2xl font-semibold mt-1">Your invoice</h1>
               <p className="text-sm text-gray-600 mt-1">Billed to {invoice.customer_name}</p>
             </div>
@@ -370,8 +370,8 @@ export default function PublicInvoice() {
           <div className="px-6 sm:px-8 pb-8">
             <div className="rounded-lg bg-amber-50 border border-amber-200 p-4 text-sm text-amber-900">
               Online payment isn't ready for this invoice yet. Please contact us at
-              <a href="mailto:hello@getprettypotty.com" className="underline ml-1">
-                hello@getprettypotty.com
+              <a href="mailto:hello@movingdayheroes.com" className="underline ml-1">
+                hello@movingdayheroes.com
               </a>
               .
             </div>
@@ -470,14 +470,14 @@ export default function PublicInvoice() {
         {/* Done state */}
         {allDone && (
           <div className="px-6 sm:px-8 py-6 border-t text-center text-sm text-gray-600">
-            All set — thank you for choosing Pretty Potty. We'll be in touch shortly.
+            All set — thank you for choosing Moving Day Heroes. We'll be in touch shortly.
           </div>
         )}
 
         {/* Footer */}
         <div className="px-6 sm:px-8 py-4 border-t text-xs text-gray-500 flex flex-col sm:flex-row sm:justify-between gap-2">
-          <span>Pretty Potty · (512) 270-5164 · getprettypotty.com</span>
-          <span>Questions? hello@getprettypotty.com</span>
+          <span>Moving Day Heroes · (555) 000-0000 · movingdayheroes.com</span>
+          <span>Questions? hello@movingdayheroes.com</span>
         </div>
       </div>
     </div>

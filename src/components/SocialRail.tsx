@@ -8,7 +8,7 @@ const SocialRail = () => {
         href={SITE.instagramUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`Follow Pretty Potty on Instagram (@${SITE.instagramHandle})`}
+        aria-label={`Follow ${SITE.name} on Instagram (@${SITE.instagramHandle})`}
         className="group flex items-center gap-2 bg-ink text-background pl-2 pr-3 py-3 rounded-r-xl shadow-card hover:bg-primary hover:text-ink transition-colors duration-300"
       >
         <Instagram className="h-5 w-5" />
