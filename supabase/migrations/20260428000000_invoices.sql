@@ -12,6 +12,9 @@
 -- All public access happens through edge functions using the public_token;
 -- RLS denies direct anon reads.
 
+-- Required for encode(gen_random_bytes(...), 'hex') public_token default.
+CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA extensions;
+
 CREATE TYPE invoice_status AS ENUM (
   'draft',     -- created but not sent
   'sent',      -- sent to customer, awaiting payment
@@ -44,7 +47,7 @@ CREATE TABLE public.invoices (
   voided_at  TIMESTAMPTZ,
 
   -- Public access token (random, unguessable). Used in /i/<token> URLs.
-  public_token TEXT NOT NULL UNIQUE DEFAULT encode(gen_random_bytes(24), 'hex'),
+  public_token TEXT NOT NULL UNIQUE DEFAULT encode(extensions.gen_random_bytes(24), 'hex'),
 
   -- Stripe
   stripe_payment_link_id  TEXT,

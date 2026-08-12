@@ -1,4 +1,4 @@
-project_id = "whvuohkpbcpytmwnhriy"
+project_id = "pnkpqilkvmzzszemnfik"
 
 # Resend inbound webhook — Resend cannot send a Supabase JWT, so disable verification.
 # Authenticity is enforced via Svix signature verification inside the function
@@ -18,4 +18,12 @@ verify_jwt = false
 
 # Cron-triggered. Uses CRON_SECRET shared secret instead of a Supabase JWT.
 [functions.invoice-reminders]
+verify_jwt = false
+
+# Quo SMS webhook — no Supabase JWT; HMAC verified via QUO_WEBHOOK_SIGNING_KEY.
+[functions.receive-sms]
+verify_jwt = false
+
+# Cron worker for delayed AI SMS replies. Auth via CRON_SECRET.
+[functions.sms-process-pending]
 verify_jwt = false
