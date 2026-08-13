@@ -62,5 +62,5 @@ export function serviceClient(): SupabaseClient {
 
 /** Public site origin used for hosted invoice URLs. */
 export function siteOrigin(): string {
-  return Deno.env.get("PUBLIC_SITE_URL") ?? "https://getprettypotty.com";
+  return Deno.env.get("PUBLIC_SITE_URL") ?? "https://movingdayheroes.com";
 }

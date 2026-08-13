@@ -22,7 +22,7 @@ const json = (b: unknown, s = 200) =>
 
 const RESEND_API_URL = "https://api.resend.com/emails";
 const QUO_API_URL = "https://api.openphone.com/v1/messages";
-const FROM_EMAIL = "Pretty Potty <hello@getprettypotty.com>";
+const FROM_EMAIL = "Moving Day Heroes <hello@movingdayheroes.com>";
 
 const REMINDER_DAYS = [1, 3, 7]; // days after issued_at
 
@@ -108,11 +108,11 @@ Deno.serve(async (req) => {
           from: FROM_EMAIL,
           to: [inv.customer_email],
           subject: inv.email_subject?.trim()
-            ? `Reminder: Pretty Potty: ${inv.email_subject.trim()} — ${totalStr}`
-            : `Reminder: your Pretty Potty invoice — ${totalStr}`,
+            ? `Reminder: Moving Day Heroes: ${inv.email_subject.trim()} — ${totalStr}`
+            : `Reminder: your Moving Day Heroes invoice — ${totalStr}`,
           html: `<div style="font-family:Arial,sans-serif;color:#222;font-size:14px;line-height:1.5;">
             <p>Hi ${escapeHtml(inv.customer_name)},</p>
-            <p>This is a friendly reminder that your Pretty Potty invoice for
+            <p>This is a friendly reminder that your Moving Day Heroes invoice for
             <strong>${totalStr}</strong> is still awaiting payment.</p>
             ${
               inv.customer_notes?.trim()
@@ -124,9 +124,9 @@ Deno.serve(async (req) => {
                 View &amp; pay invoice
               </a>
             </p>
-            <p style="color:#666;font-size:13px;">— Pretty Potty</p>
+            <p style="color:#666;font-size:13px;">— Moving Day Heroes</p>
           </div>`,
-          text: `Reminder: your Pretty Potty invoice for ${totalStr} is awaiting payment.\nView & pay: ${publicUrl}`,
+          text: `Reminder: your Moving Day Heroes invoice for ${totalStr} is awaiting payment.\nView & pay: ${publicUrl}`,
         }),
       });
       if (r.ok) {
@@ -149,7 +149,7 @@ Deno.serve(async (req) => {
         method: "POST",
         headers: { Authorization: QUO_API_KEY, "Content-Type": "application/json" },
         body: JSON.stringify({
-          content: `Pretty Potty reminder: your invoice for ${totalStr} is awaiting payment. View & pay: ${publicUrl}`,
+          content: `Moving Day Heroes reminder: your invoice for ${totalStr} is awaiting payment. View & pay: ${publicUrl}`,
           from: QUO_FROM,
           to: [inv.customer_phone],
         }),

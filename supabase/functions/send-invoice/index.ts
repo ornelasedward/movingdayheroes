@@ -12,8 +12,8 @@ import { corsHeaders, json, requireAdmin, siteOrigin } from "../_shared/admin.ts
 
 const RESEND_API_URL = "https://api.resend.com/emails";
 const QUO_API_URL = "https://api.openphone.com/v1/messages";
-const FROM_EMAIL = "Pretty Potty <hello@getprettypotty.com>";
-const REPLY_TO = "hello@getprettypotty.com";
+const FROM_EMAIL = "Moving Day Heroes <hello@movingdayheroes.com>";
+const REPLY_TO = "hello@movingdayheroes.com";
 
 interface SendBody {
   invoice_id?: string;
@@ -82,15 +82,15 @@ Deno.serve(async (req) => {
       // number; admins can set a per-invoice override (e.g. "Smith wedding
       // 5/4/26") that better describes what the customer is paying for.
       const baseSubject = invoice.email_subject?.trim()
-        ? `Pretty Potty: ${invoice.email_subject.trim()} — ${totalStr}`
-        : `Your Pretty Potty invoice — ${totalStr}`;
+        ? `Moving Day Heroes: ${invoice.email_subject.trim()} — ${totalStr}`
+        : `Your Moving Day Heroes invoice — ${totalStr}`;
       const subject = isReminder ? `Reminder: ${baseSubject}` : baseSubject;
 
       const intro = isReminder
         ? `<p>Hi ${escapeHtml(invoice.customer_name)},</p>
            <p>Just a friendly reminder that your invoice is still awaiting payment.</p>`
         : `<p>Hi ${escapeHtml(invoice.customer_name)},</p>
-           <p>Thanks for choosing Pretty Potty. Your invoice is ready for review and payment.</p>`;
+           <p>Thanks for choosing Moving Day Heroes. Your invoice is ready for review and payment.</p>`;
 
       // Optional note from the admin shown above the line items.
       const noteBlock = invoice.customer_notes?.trim()
@@ -150,21 +150,21 @@ Deno.serve(async (req) => {
           </p>
           <p style="font-size:12px;color:#888;">If the button doesn't work, copy this link:<br/>${publicUrl}</p>
           <p style="margin-top:24px;color:#666;font-size:13px;line-height:1.5;border-top:1px solid #eee;padding-top:12px;">
-            <strong style="color:#222;">Pretty Potty</strong> · Elevated Restroom Experiences<br/>
-            (512) 270-5164 · getprettypotty.com<br/>
+            <strong style="color:#222;">Moving Day Heroes</strong> · Moving Made Simple<br/>
+            (737) 418-1707 · movingdayheroes.com<br/>
             Austin, TX &amp; all of Central Texas
           </p>
         </div>`;
 
       const text = [
         isReminder
-          ? `Hi ${invoice.customer_name}, just a reminder that your Pretty Potty invoice is awaiting payment.`
-          : `Hi ${invoice.customer_name}, your Pretty Potty invoice is ready.`,
+          ? `Hi ${invoice.customer_name}, just a reminder that your Moving Day Heroes invoice is awaiting payment.`
+          : `Hi ${invoice.customer_name}, your Moving Day Heroes invoice is ready.`,
         invoice.customer_notes?.trim() ? `\n${invoice.customer_notes.trim()}\n` : "",
         `Total: ${totalStr}${dueStr ? `, due ${dueStr}` : ""}`,
         `View & pay: ${publicUrl}`,
         "",
-        "— Pretty Potty",
+        "— Moving Day Heroes",
       ]
         .filter(Boolean)
         .join("\n");
@@ -208,8 +208,8 @@ Deno.serve(async (req) => {
       results.sms = { ok: false, error: "QUO_API_KEY / QUO_FROM_NUMBER not configured" };
     } else {
       const smsBody = isReminder
-        ? `Pretty Potty reminder: your invoice for ${totalStr} is awaiting payment. View & pay: ${publicUrl}`
-        : `Pretty Potty: your invoice for ${totalStr} is ready. View & pay: ${publicUrl}`;
+        ? `Moving Day Heroes reminder: your invoice for ${totalStr} is awaiting payment. View & pay: ${publicUrl}`
+        : `Moving Day Heroes: your invoice for ${totalStr} is ready. View & pay: ${publicUrl}`;
 
       const r = await fetch(QUO_API_URL, {
         method: "POST",

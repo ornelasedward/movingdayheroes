@@ -185,8 +185,8 @@ Deno.serve(async (req) => {
       // the customer-friendly email subject (if provided) instead of leaking
       // the internal invoice_number. Falls back to a generic description.
       const friendlyName = invoice.email_subject?.trim()
-        ? `Pretty Potty — ${invoice.email_subject.trim()}`
-        : `Pretty Potty service — ${invoice.customer_name}`;
+        ? `Moving Day Heroes — ${invoice.email_subject.trim()}`
+        : `Moving Day Heroes service — ${invoice.customer_name}`;
       const productRes = await stripeFetch(STRIPE_KEY, "/v1/products", {
         name: friendlyName,
         // invoice_number is kept in metadata (admin/Stripe dashboard side) so

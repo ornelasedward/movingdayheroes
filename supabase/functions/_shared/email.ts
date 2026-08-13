@@ -5,8 +5,8 @@
 // Each helper returns { ok, id?, error? } and never throws.
 
 const RESEND_API_URL = "https://api.resend.com/emails";
-const FROM_EMAIL = "Pretty Potty <hello@getprettypotty.com>";
-const REPLY_TO = "hello@getprettypotty.com";
+const FROM_EMAIL = "Moving Day Heroes <hello@movingdayheroes.com>";
+const REPLY_TO = "hello@movingdayheroes.com";
 
 // deno-lint-ignore no-explicit-any
 type Json = any;
@@ -65,8 +65,8 @@ async function sendViaResend(opts: {
 
 const FOOTER_HTML = `
   <p style="margin-top:32px;color:#666;font-size:13px;line-height:1.5;border-top:1px solid #eee;padding-top:12px;">
-    <strong style="color:#222;">Pretty Potty</strong> &middot; Elevated Restroom Experiences<br/>
-    (512) 270-5164 &middot; getprettypotty.com<br/>
+    <strong style="color:#222;">Moving Day Heroes</strong> &middot; Moving Made Simple<br/>
+    (737) 418-1707 &middot; movingdayheroes.com<br/>
     Austin, TX &amp; all of Central Texas
   </p>`;
 
@@ -109,7 +109,7 @@ export async function sendPaymentConfirmation(args: {
   const html = `
     <div style="font-family:Arial,sans-serif;color:#222;font-size:14px;line-height:1.5;max-width:560px;margin:0 auto;">
       <p>Hi ${escapeHtml(invoice.customer_name)},</p>
-      <p>Thank you! Your payment has been received and your booking with Pretty Potty is confirmed${eventLabel ? `<strong>${eventLabel}</strong>` : ""}.</p>
+      <p>Thank you! Your payment has been received and your move with Moving Day Heroes is confirmed${eventLabel ? `<strong>${eventLabel}</strong>` : ""}.</p>
 
       <div style="margin:20px 0;padding:16px 20px;background:#ecfdf5;border-left:4px solid #10b981;border-radius:6px;">
         <div style="font-size:13px;color:#065f46;text-transform:uppercase;letter-spacing:0.04em;">Paid</div>
@@ -150,13 +150,13 @@ export async function sendPaymentConfirmation(args: {
         <a href="${publicUrl}" style="color:#0f172a;text-decoration:underline;">${publicUrl}</a>
       </p>
 
-      <p style="color:#444;">If you have any questions about your booking, just reply to this email — we'd love to help.</p>
+      <p style="color:#444;">If you have any questions about your move, just reply to this email — we'd love to help.</p>
       ${FOOTER_HTML}
     </div>`;
 
   const text = [
     `Hi ${invoice.customer_name},`,
-    `Thank you! Your payment has been received and your Pretty Potty booking${eventLabel} is confirmed.`,
+    `Thank you! Your payment has been received and your Moving Day Heroes move${eventLabel} is confirmed.`,
     "",
     `Paid: ${total} on ${fmtDate(invoice.paid_at)}`,
     "",
@@ -175,14 +175,14 @@ export async function sendPaymentConfirmation(args: {
     `Invoice copy: ${publicUrl}`,
     "",
     "Questions? Reply to this email.",
-    "— Pretty Potty",
+    "— Moving Day Heroes",
   ]
     .filter(Boolean)
     .join("\n");
 
   const subject = invoice.email_subject?.trim()
-    ? `Pretty Potty: payment received — ${invoice.email_subject.trim()}`
-    : `Pretty Potty: payment received — ${total}`;
+    ? `Moving Day Heroes: payment received — ${invoice.email_subject.trim()}`
+    : `Moving Day Heroes: payment received — ${total}`;
 
   return await sendViaResend({ to: invoice.customer_email, subject, html, text });
 }
@@ -236,7 +236,7 @@ export async function sendSignReminder(args: {
     `To finalize your booking, please sign your ${document.title}:`,
     publicUrl,
     "",
-    "— Pretty Potty",
+    "— Moving Day Heroes",
   ].join("\n");
 
   const subject =

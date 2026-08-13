@@ -1,4 +1,4 @@
-// Sends a brand-new email from hello@getprettypotty.com (not a reply).
+// Sends a brand-new email from hello@movingdayheroes.com (not a reply).
 // Auth: Supabase JWT + admin_users allowlist.
 // Logs the sent email to public.outbound_replies with inbound_email_id = NULL.
 
@@ -12,19 +12,19 @@ const corsHeaders = {
 };
 
 const RESEND_API_URL = "https://api.resend.com/emails";
-const FROM_ADDRESS = "Pretty Potty <hello@getprettypotty.com>";
-const REPLY_TO_ADDRESS = "hello@getprettypotty.com";
+const FROM_ADDRESS = "Moving Day Heroes <hello@movingdayheroes.com>";
+const REPLY_TO_ADDRESS = "hello@movingdayheroes.com";
 
 const SIGNATURE_TEXT = `--
-Pretty Potty · Elevated Restroom Experiences
-(512) 270-5164 · https://getprettypotty.com
+Moving Day Heroes · Moving Made Simple
+(737) 418-1707 · https://movingdayheroes.com
 Austin, TX & all of Central Texas`;
 
 const SIGNATURE_HTML = `
 <p style="margin-top:24px;color:#666;font-size:13px;line-height:1.5;border-top:1px solid #eee;padding-top:12px;">
-  <strong style="color:#222;">Pretty Potty</strong> · Elevated Restroom Experiences<br/>
-  <a href="tel:+15122705164" style="color:#666;text-decoration:none;">(512) 270-5164</a> ·
-  <a href="https://getprettypotty.com" style="color:#666;text-decoration:none;">getprettypotty.com</a><br/>
+  <strong style="color:#222;">Moving Day Heroes</strong> · Moving Made Simple<br/>
+  <a href="tel:+17374181707" style="color:#666;text-decoration:none;">(737) 418-1707</a> ·
+  <a href="https://movingdayheroes.com" style="color:#666;text-decoration:none;">movingdayheroes.com</a><br/>
   Austin, TX &amp; all of Central Texas
 </p>`;
 

@@ -8,9 +8,9 @@ const corsHeaders = {
 };
 
 const RESEND_API_URL = "https://api.resend.com/emails";
-const NOTIFY_TO = Deno.env.get("NOTIFY_TO_EMAIL") ?? "support@getprettypotty.com";
-const FROM_ADDRESS = "Pretty Potty <hello@getprettypotty.com>";
-const REPLY_TO_ADDRESS = "hello@getprettypotty.com";
+const NOTIFY_TO = Deno.env.get("NOTIFY_TO_EMAIL") ?? "ornelasedward@rocketmail.com";
+const FROM_ADDRESS = "Moving Day Heroes <hello@movingdayheroes.com>";
+const REPLY_TO_ADDRESS = "hello@movingdayheroes.com";
 
 const schema = z.object({
   name: z.string().trim().min(1).max(100),
@@ -71,9 +71,9 @@ Deno.serve(async (req) => {
       <p><strong>Name:</strong> ${escape(data.name)}</p>
       <p><strong>Phone:</strong> ${escape(data.phone)}</p>
       <p><strong>Email:</strong> ${escape(data.email)}</p>
-      <p><strong>Event date:</strong> ${escape(data.eventDate || "—")}</p>
+      <p><strong>Move date:</strong> ${escape(data.eventDate || "—")}</p>
       <p><strong>Location:</strong> ${escape(data.location || "—")}</p>
-      <p><strong>Guest count:</strong> ${escape(data.guests || "—")}</p>
+      <p><strong>Move type:</strong> ${escape(data.guests || "—")}</p>
       <p><strong>Message:</strong><br/>${escape(data.message || "—").replace(/\n/g, "<br/>")}</p>
     `;
 
@@ -100,15 +100,15 @@ Deno.serve(async (req) => {
     const confirmHtml = `
       <div style="font-family: Arial, sans-serif; color: #333; max-width: 560px; margin: 0 auto;">
         <h2 style="color:#111;">Thanks, ${escape(data.name.split(" ")[0])} ✨</h2>
-        <p>We received your quote request for Pretty Potty Austin and will reach out within <strong>24 hours</strong> with custom pricing.</p>
+        <p>We received your quote request for Moving Day Heroes Austin and will reach out within <strong>24 hours</strong> with a custom moving quote.</p>
         <p>Here's what you sent us:</p>
         <ul>
-          <li><strong>Event date:</strong> ${escape(data.eventDate || "—")}</li>
+          <li><strong>Move date:</strong> ${escape(data.eventDate || "—")}</li>
           <li><strong>Location:</strong> ${escape(data.location || "—")}</li>
-          <li><strong>Guest count:</strong> ${escape(data.guests || "—")}</li>
+          <li><strong>Move type:</strong> ${escape(data.guests || "—")}</li>
         </ul>
-        <p>If your event is urgent, call or text us at <strong>(512) 270-5164</strong>.</p>
-        <p style="margin-top:24px;">— The Pretty Potty team</p>
+        <p>If your move is urgent, call or text us at <strong>(737) 418-1707</strong>.</p>
+        <p style="margin-top:24px;">— The Moving Day Heroes team</p>
       </div>
     `;
 
@@ -122,7 +122,7 @@ Deno.serve(async (req) => {
         from: FROM_ADDRESS,
         to: [data.email],
         reply_to: REPLY_TO_ADDRESS,
-        subject: "We got your request — Pretty Potty Austin",
+        subject: "We got your request — Moving Day Heroes Austin",
         html: confirmHtml,
       }),
     });
