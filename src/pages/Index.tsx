@@ -114,11 +114,21 @@ const Index = () => {
               transportation planning, and structured moving support designed for efficient local relocations
               across Travis County communities.
             </p>
-            <div className="mt-8">
+            <div className="mt-8 flex flex-wrap items-center gap-3">
               <Button asChild variant="sun" size="xl" className="h-14 px-10 text-lg md:h-16 md:px-12 md:text-xl font-semibold">
                 <Link to="/get-a-quote">
                   Get a Free Quote <ArrowRight className="h-5 w-5" />
                 </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="xl"
+                className="h-14 px-6 text-lg md:h-16 md:px-8 md:text-xl border-background/40 bg-background/10 text-background hover:bg-background/20 hover:text-background"
+              >
+                <a href={SITE.phoneLink}>
+                  <Phone className="h-5 w-5" /> {SITE.phone}
+                </a>
               </Button>
             </div>
             <motion.p

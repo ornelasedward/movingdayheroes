@@ -480,7 +480,7 @@ export default function PublicInvoice() {
 
         {/* Footer */}
         <div className="px-6 sm:px-8 py-4 border-t text-xs text-gray-500 flex flex-col sm:flex-row sm:justify-between gap-2">
-          <span>Moving Day Heroes · (555) 000-0000 · movingdayheroes.com</span>
+          <span>Moving Day Heroes · {SITE.phone} · movingdayheroes.com</span>
           <span>Questions? hello@movingdayheroes.com</span>
         </div>
       </div>

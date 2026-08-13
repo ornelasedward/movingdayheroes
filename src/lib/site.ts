@@ -2,8 +2,8 @@ export const SITE = {
   name: "Moving Day Heroes",
   shortName: "MDH",
   tagline: "Moving Made Simple",
-  phone: "(555) 000-0000", // TODO: replace with real number
-  phoneLink: "tel:+15550000000",
+  phone: "(737) 418-1707",
+  phoneLink: "tel:+17374181707",
   email: "hello@movingdayheroes.com",
   domain: "https://movingdayheroes.com",
   city: "Austin, TX",
