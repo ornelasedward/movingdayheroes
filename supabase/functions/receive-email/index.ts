@@ -17,6 +17,13 @@ const corsHeaders = {
 
 const RESEND_API_URL = "https://api.resend.com/emails";
 
+const escapeHtml = (s: string) =>
+  s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+
 interface ResendInboundEvent {
   type: string;
   created_at: string;
@@ -142,6 +149,60 @@ Deno.serve(async (req) => {
     if (dbError) {
       console.error("DB insert error:", dbError);
       throw new Error("Failed to save inbound email");
+    }
+
+    // Forward a copy to the ops inbox (NOTIFY_TO_EMAIL). Skip if the
+    // inbound is already from/to that address to avoid loops.
+    const notifyTo = (Deno.env.get("NOTIFY_TO_EMAIL") ?? "").trim().toLowerCase();
+    const fromAddr = (detail?.from ?? meta.from ?? "").toLowerCase();
+    const toAddrs = (detail?.to ?? meta.to ?? []).map((a) => a.toLowerCase());
+    const shouldForward =
+      !!notifyTo &&
+      !fromAddr.includes(notifyTo) &&
+      !toAddrs.some((a) => a.includes(notifyTo));
+
+    if (shouldForward) {
+      const subject = detail?.subject ?? meta.subject ?? "(no subject)";
+      const textBody = detail?.text ?? "";
+      const htmlBody = detail?.html ?? null;
+      const originalFrom = detail?.from ?? meta.from ?? "unknown";
+      const forwardText =
+        `Forwarded inbound email\n` +
+        `From: ${originalFrom}\n` +
+        `To: ${(detail?.to ?? meta.to ?? []).join(", ")}\n` +
+        `Subject: ${subject}\n\n` +
+        `${textBody || "(no text body)"}`;
+      const forwardHtml = htmlBody
+        ? `<div style="font:14px/1.4 system-ui,sans-serif;color:#444;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #ddd;">
+             <strong>Forwarded inbound email</strong><br/>
+             <strong>From:</strong> ${escapeHtml(originalFrom)}<br/>
+             <strong>To:</strong> ${escapeHtml((detail?.to ?? meta.to ?? []).join(", "))}<br/>
+             <strong>Subject:</strong> ${escapeHtml(subject)}
+           </div>${htmlBody}`
+        : `<pre style="white-space:pre-wrap;font:14px/1.4 system-ui,sans-serif;">${escapeHtml(forwardText)}</pre>`;
+
+      try {
+        const forwardRes = await fetch(RESEND_API_URL, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${RESEND_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: "Moving Day Heroes <hello@movingdayheroes.com>",
+            to: [notifyTo],
+            reply_to: originalFrom.match(/<([^>]+)>/)?.[1] ?? originalFrom,
+            subject: `Fwd: ${subject}`,
+            text: forwardText,
+            html: forwardHtml,
+          }),
+        });
+        if (!forwardRes.ok) {
+          console.error("Forward email failed:", forwardRes.status, await forwardRes.text());
+        }
+      } catch (err) {
+        console.error("Forward email error:", err);
+      }
     }
 
     return new Response(JSON.stringify({ ok: true, email_id: meta.email_id }), {
